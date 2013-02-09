@@ -1,7 +1,8 @@
 /**
  *
  */
-package main.scala.pipe
+
+package pipe
 
 import org.jboss.netty.bootstrap.ServerBootstrap
 import org.jboss.netty.channel.{ ChannelPipeline, ChannelPipelineFactory, Channels }

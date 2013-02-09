@@ -8,8 +8,6 @@
  * http://stackoverflow.com/questions/2508131/the-scala-way-to-use-one-actor-per-socket-connection 
  */
 
-package main.scala
-
 import pipe.CloudReceiver
 
 object runner {
