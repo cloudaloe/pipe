@@ -12,20 +12,37 @@ import org.jboss.netty.handler.codec.http._
 import java.util.concurrent.Executors
 import java.net.InetSocketAddress
 
+import javax.net.ssl.SSLContext
+import javax.net.ssl.SSLEngine
+import org.jboss.netty.handler.ssl.SslHandler
+
 /**
  * 
  *
  */
   
+/**class a extends SimpleChannelHandler {
+	def createSSLEngine(): SSLEngine = {	
+		val sslContext : SSLContext = SSLContext.getInstance("TLS")
+		val sslEngine : SSLEngine = sslContext.createSSLEngine()
+		sslEngine
+	}
+}*/
+	  
+
 class HttpServerPipelineFactory extends ChannelPipelineFactory {
 	def getPipeline: ChannelPipeline = {	
 	  // Create a default pipeline implementation.
 	  val pipeline = Channels.pipeline() 
 	    
       // Uncomment the following line if you want HTTPS
-      //SSLEngine engine = SecureChatSslContextFactory.getServerContext().createSSLEngine();
-      //engine.setUseClientMode(false);
-      //pipeline.addLast("ssl", new SslHandler(engine));
+      //val engine = SecureChatSslContextFactory.getServerContext().createSSLEngine();
+	  val sslContext : SSLContext = SSLContext.getInstance("TLS")
+	  sslContext.init(null, null, null) // need to enter keystore, cipher suites etc through these params
+	  val sslEngine : SSLEngine = sslContext.createSSLEngine()
+	  sslEngine.setUseClientMode(false); // javax.net.ssl.SSLEngine's special way of saying 'play a server on the SSL handshake'   
+	  pipeline.addLast("ssl", new SslHandler(sslEngine));
+	  
   
       pipeline.addLast("decoder", new HttpRequestDecoder())
       // Uncomment the following line if you don't want to handle HttpChunks.
@@ -39,7 +56,8 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 }
 
 class HttpRequestHandler extends SimpleChannelUpstreamHandler {
-	println("http request receiveds")
+	println("http request received")
+	
 }
 
 class CloudReceiver {
