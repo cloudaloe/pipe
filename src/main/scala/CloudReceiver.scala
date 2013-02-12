@@ -12,7 +12,7 @@ import java.net.InetSocketAddress
 
 class CloudReceiver {
 
- 	println("Broker object starting")
+ 	println("CloudReceiver object starting")
 				
 	val incomingListener = new ServerBootstrap(
 	    new NioServerSocketChannelFactory(Executors.newCachedThreadPool, Executors.newCachedThreadPool))
