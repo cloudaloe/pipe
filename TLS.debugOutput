@@ -1,0 +1,752 @@
+[0m[[0minfo[0m] [0mLoading project definition from /usr/local/src/pipe/project[0m
+[0m[[0minfo[0m] [0mSet current project to default-7ea0ea (in build file:/usr/local/src/pipe/)[0m
+[0m[[0minfo[0m] [0mRunning runner [0m
+main starting
+CloudReceiver object starting
+***
+found key for : selfsigned
+chain [0] = [
+[
+  Version: V3
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 2048 bits
+  modulus: 30365595292379735522124915323579181274210265285392058624713014024359013136375829208828492178491818863458757461262490831095568068291327510117266588942909722580629951545048709637674564657327338832249600428106332134820310171395852821541067140222507320613022360477539456550915822344738842802989155384718086474310028370737536274735978562407436874890983202337296096287347989568413685348435225418232881291710813273696348892017250070651624950797498483394131293938967140963392172385023756956310770285290466888462350408873170794645731122375244831886045567671813325341642668637201936831444002846105032068878472130788000425772773
+  public exponent: 65537
+  Validity: [From: Tue Feb 12 01:41:29 IST 2013,
+               To: Fri Feb 07 01:41:29 IST 2014]
+  Issuer: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  SerialNumber: [    511981a9]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: A7 C8 1E 67 1C 96 AB 6C   BF 68 B1 60 CA A7 5F A1  ...g...l.h.`.._.
+0010: A9 97 99 F1 30 D1 67 F1   7D 2E DA 13 F4 32 71 B5  ....0.g......2q.
+0020: 45 22 11 C1 58 D9 11 8C   73 51 A6 55 FA F1 F8 80  E"..X...sQ.U....
+0030: 18 43 EA 02 BC 87 73 D8   0B DD 31 C3 01 D2 0A 13  .C....s...1.....
+0040: 4C 5D 7C DC 33 03 0F CA   F3 23 00 68 D3 76 52 5E  L]..3....#.h.vR^
+0050: 11 E4 F5 E0 D8 34 32 11   00 1F 3E 9E B1 E0 7B 3E  .....42...>....>
+0060: DF 80 E5 00 91 1A A4 CA   E4 F1 08 BE F7 F6 F5 E1  ................
+0070: 3D 4E E9 F7 CB E5 9D 06   CA FC DD D8 5F 70 E9 61  =N.........._p.a
+0080: D5 B6 7C 45 6F 02 1D 23   79 6F 6C 99 76 D9 95 B6  ...Eo..#yol.v...
+0090: FC C7 E8 97 32 9F 04 8E   32 E1 AE E9 E1 51 54 94  ....2...2....QT.
+00A0: 16 9C 58 03 41 9E 38 7E   2A A2 6F E3 5F 68 56 16  ..X.A.8.*.o._hV.
+00B0: 6C 53 4E 77 BD 67 09 2F   C0 CF 52 DA 4B 37 A0 5F  lSNw.g./..R.K7._
+00C0: 65 EC DB BA FF 80 9B 2A   34 1A 11 80 6B 19 6F FB  e......*4...k.o.
+00D0: 42 5E 04 AA 22 92 92 8F   31 FA EE 1E 37 23 56 37  B^.."...1...7#V7
+00E0: 92 04 F9 DB 30 B8 53 06   6D 61 30 11 CD F5 B7 07  ....0.S.ma0.....
+00F0: F5 A1 98 16 94 F2 8E 88   26 ED B7 32 9C 0C B1 BF  ........&..2....
+
+]
+***
+adding as trusted cert:
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Issuer:  CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Algorithm: RSA; Serial number: 0x511981a9
+  Valid from Tue Feb 12 01:41:29 IST 2013 until Fri Feb 07 01:41:29 IST 2014
+
+trigger seeding of SecureRandom
+done seeding SecureRandom
+Using SSLEngineImpl.
+http request received
+***
+found key for : selfsigned
+chain [0] = [
+[
+  Version: V3
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 2048 bits
+  modulus: 30365595292379735522124915323579181274210265285392058624713014024359013136375829208828492178491818863458757461262490831095568068291327510117266588942909722580629951545048709637674564657327338832249600428106332134820310171395852821541067140222507320613022360477539456550915822344738842802989155384718086474310028370737536274735978562407436874890983202337296096287347989568413685348435225418232881291710813273696348892017250070651624950797498483394131293938967140963392172385023756956310770285290466888462350408873170794645731122375244831886045567671813325341642668637201936831444002846105032068878472130788000425772773
+  public exponent: 65537
+  Validity: [From: Tue Feb 12 01:41:29 IST 2013,
+               To: Fri Feb 07 01:41:29 IST 2014]
+  Issuer: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  SerialNumber: [    511981a9]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: A7 C8 1E 67 1C 96 AB 6C   BF 68 B1 60 CA A7 5F A1  ...g...l.h.`.._.
+0010: A9 97 99 F1 30 D1 67 F1   7D 2E DA 13 F4 32 71 B5  ....0.g......2q.
+0020: 45 22 11 C1 58 D9 11 8C   73 51 A6 55 FA F1 F8 80  E"..X...sQ.U....
+0030: 18 43 EA 02 BC 87 73 D8   0B DD 31 C3 01 D2 0A 13  .C....s...1.....
+0040: 4C 5D 7C DC 33 03 0F CA   F3 23 00 68 D3 76 52 5E  L]..3....#.h.vR^
+0050: 11 E4 F5 E0 D8 34 32 11   00 1F 3E 9E B1 E0 7B 3E  .....42...>....>
+0060: DF 80 E5 00 91 1A A4 CA   E4 F1 08 BE F7 F6 F5 E1  ................
+0070: 3D 4E E9 F7 CB E5 9D 06   CA FC DD D8 5F 70 E9 61  =N.........._p.a
+0080: D5 B6 7C 45 6F 02 1D 23   79 6F 6C 99 76 D9 95 B6  ...Eo..#yol.v...
+0090: FC C7 E8 97 32 9F 04 8E   32 E1 AE E9 E1 51 54 94  ....2...2....QT.
+00A0: 16 9C 58 03 41 9E 38 7E   2A A2 6F E3 5F 68 56 16  ..X.A.8.*.o._hV.
+00B0: 6C 53 4E 77 BD 67 09 2F   C0 CF 52 DA 4B 37 A0 5F  lSNw.g./..R.K7._
+00C0: 65 EC DB BA FF 80 9B 2A   34 1A 11 80 6B 19 6F FB  e......*4...k.o.
+00D0: 42 5E 04 AA 22 92 92 8F   31 FA EE 1E 37 23 56 37  B^.."...1...7#V7
+00E0: 92 04 F9 DB 30 B8 53 06   6D 61 30 11 CD F5 B7 07  ....0.S.ma0.....
+00F0: F5 A1 98 16 94 F2 8E 88   26 ED B7 32 9C 0C B1 BF  ........&..2....
+
+]
+***
+adding as trusted cert:
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Issuer:  CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Algorithm: RSA; Serial number: 0x511981a9
+  Valid from Tue Feb 12 01:41:29 IST 2013 until Fri Feb 07 01:41:29 IST 2014
+
+trigger seeding of SecureRandom
+done seeding SecureRandom
+Using SSLEngineImpl.
+http request received
+Allow unsafe renegotiation: false
+Allow legacy hello messages: true
+Is initial handshake: true
+Is secure renegotiation: false
+Allow unsafe renegotiation: false
+Allow legacy hello messages: true
+Is initial handshake: true
+Is secure renegotiation: false
+New I/O worker #1, READ: TLSv1 Handshake, length = 226
+New I/O worker #2, READ: TLSv1 Handshake, length = 226
+*** ClientHello, TLSv1
+RandomCookie:  GMT: 1360670373 bytes = { 59, 202, 8, 214, 87, 203, 154, 172, 227, 35, 194, 206, 20, 27, 227, 215, 176, 21, 5, 6, 223, 194, 143, 47, 166, 253, 46, 72 }
+Session ID:  *** ClientHello, TLSv1
+RandomCookie:  GMT: 1360670373 bytes = { 176, 91, 109, 125, 2, 103, 9, 249, 21, 202, 151, 94, 40, 147, 187, 21, {81, 26, 47, 0, 232, 220, 189, 99, 20, 154, 48, 122, 158, 18, 240, 214, 31, 134, 169, 242, 124, 67, 63, 210, 230, 82, 156, 16, 150, 90, 1, 182}
+216, 93, 229, 111, 142, 79, 240, 200, 82, 233, 93, 183 }
+Session ID:  {81, 26, 47, 0, 232, 220, 189, 99, 20, 154, 48, 122, 158, 18, 240, 214, 31, 134, 169, 242, 124, 67, 63, 210, 230, 82, 156, 16, 150, 90, 1, 182}
+Cipher Suites: [TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, Unknown 0x0:0x88, Unknown 0x0:0x87, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA, Unknown 0x0:0x84, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_RC4_128_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, Unknown 0x0:0x45, Unknown 0x0:0x44, SSL_DHE_DSS_WITH_RC4_128_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_RC4_128_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_RC4_128_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, Unknown 0x0:0x96, Unknown 0x0:0x41, SSL_RSA_WITH_RC4_128_SHA, SSL_RSA_WITH_RC4_128_MD5, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA, SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA, SSL_RSA_WITH_3DES_EDE_CBC_SHA]
+Compression Methods:  { 0 }
+Cipher Suites: [TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, Unknown 0x0:0x88, Unknown 0x0:0x87, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA, Unknown 0x0:0x84, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_RC4_128_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, Unknown 0x0:0x45, Unknown 0x0:0x44, SSL_DHE_DSS_WITH_RC4_128_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_RC4_128_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_RC4_128_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, Unknown 0x0:0x96, Unknown 0x0:0x41, SSL_RSA_WITH_RC4_128_SHA, SSL_RSA_WITH_RC4_128_MD5, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA, SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA, SSL_RSA_WITH_3DES_EDE_CBC_SHA]
+Compression Methods:  { 0 }
+Unsupported extension server_name, [host_name: v-cloudaloe-dev-01.local]
+Extension renegotiation_info, renegotiated_connection: <empty>
+Unsupported extension server_name, [host_name: v-cloudaloe-dev-01.local]
+Extension renegotiation_info, renegotiated_connection: <empty>
+Extension elliptic_curves, curve names: {secp256r1, secp384r1, secp521r1}
+Extension elliptic_curves, curve names: {secp256r1, secp384r1, secp521r1}
+Extension ec_point_formats, formats: [uncompressed]
+Unsupported extension type_35, data: 
+Unsupported extension type_13172, data: 
+Unsupported extension type_30031, data: 
+Unsupported extension status_request, data: 01:00:00:00:00
+***
+Extension ec_point_formats, formats: [uncompressed]
+Unsupported extension type_35, data: 
+Unsupported extension type_13172, data: 
+Unsupported extension type_30031, data: 
+Unsupported extension status_request, data: 01:00:00:00:00
+***
+matching alias: selfsigned
+matching alias: selfsigned
+%% Created:  [Session-1, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA]
+%% Created:  [Session-2, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA]
+*** ServerHello, TLSv1
+RandomCookie:  GMT: 1360670374 bytes = { 43, 169, 128, 8, 237, 82, 56, 51, 46, 212, 61, 203, 50, 234, 114, 3, 200, 230, 141, 136, 50, 175, 20, 12, 147, 11, 141, 22 }
+Session ID:  *** ServerHello, TLSv1
+RandomCookie:  GMT: 1360670374 bytes = { 208, 59, 165, 224{81, 26, 47, 166, 125, 82, 222, 1, 255, 148, 26, 126, 144, 86, 51, 194, 84, 183, 43, 65, 13, 156, 135, 86, 76, 148, 77, 14, 87, 224, 129, 2}
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+Compression Method: 0
+Extension renegotiation_info, renegotiated_connection: <empty>
+***
+Cipher suite:  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+, 138, 206, 90, 228, 247, 48, 10, 188, 199, 147, 186, 133, 17, 17, 28, 53, 237, 163, 211, 114, 21, 176, 213, 56 }
+Session ID:  {81, 26, 47, 166, 77, 26, 241, 238, 159, 165, 200, 195, 213, 215, 133, 239, 116, 82, 6, 166, 70, 79, 104, 185, 147, 168, 95, 240, 44, 197, 176, 157}
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+Compression Method: 0
+Extension renegotiation_info, renegotiated_connection: <empty>
+***
+Cipher suite:  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+*** Certificate chain
+*** Certificate chain
+chain [0] = [
+[
+  Version: V3
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 2048 bits
+  modulus: 30365595292379735522124915323579181274210265285392058624713014024359013136375829208828492178491818863458757461262490831095568068291327510117266588942909722580629951545048709637674564657327338832249600428106332134820310171395852821541067140222507320613022360477539456550915822344738842802989155384718086474310028370737536274735978562407436874890983202337296096287347989568413685348435225418232881291710813273696348892017250070651624950797498483394131293938967140963392172385023756956310770285290466888462350408873170794645731122375244831886045567671813325341642668637201936831444002846105032068878472130788000425772773
+  public exponent: 65537
+  Validity: [From: Tue Feb 12 01:41:29 IST 2013,
+               To: Fri Feb 07 01:41:29 IST 2014]
+  Issuer: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  SerialNumber: [    511981a9]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: A7 C8 1E 67 1C 96 AB 6C   BF 68 B1 60 CA A7 5F A1  ...g...l.h.`.._.
+0010: A9 97 99 F1 30 D1 67 F1   7D 2E DA 13 F4 32 71 B5  ....0.g......2q.
+0020: 45 22 11 C1 58 D9 11 8C   73 51 A6 55 FA F1 F8 80  E"..X...sQ.U....
+0030: 18 43 EA 02 BC 87 73 D8   0B DD 31 C3 01 D2 0A 13  .C....s...1.....
+0040: 4C 5D 7C DC 33 03 0F CA   F3 23 00 68 D3 76 52 5E  L]..3....#.h.vR^
+0050: 11 E4 F5 E0 D8 34 32 11   00 1F 3E 9E B1 E0 7B 3E  .....42...>....>
+0060: DF 80 E5 00 91 1A A4 CA   E4 F1 08 BE F7 F6 F5 E1  ................
+0070: 3D 4E E9 F7 CB E5 9D 06   CA FC DD D8 5F 70 E9 61  =N.........._p.a
+0080: D5 B6 7C 45 6F 02 1D 23   79 6F 6C 99 76 D9 95 B6  ...Eo..#yol.v...
+0090: FC C7 E8 97 32 9F 04 8E   32 E1 AE E9 E1 51 54 94  ....2...2....QT.
+00A0: 16 9C 58 03 41 9E 38 7E   2A A2 6F E3 5F 68 56 16  ..X.A.8.*.o._hV.
+00B0: 6C 53 4E 77 BD 67 09 2F   C0 CF 52 DA 4B 37 A0 5F  lSNw.g./..R.K7._
+00C0: 65 EC DB BA FF 80 9B 2A   34 1A 11 80 6B 19 6F FB  e......*4...k.o.
+00D0: 42 5E 04 AA 22 92 92 8F   31 FA EE 1E 37 23 56 37  B^.."...1...7#V7
+00E0: 92 04 F9 DB 30 B8 53 06   6D 61 30 11 CD F5 B7 07  ....0.S.ma0.....
+00F0: F5 A1 98 16 94 F2 8E 88   26 ED B7 32 9C 0C B1 BF  ........&..2....
+
+]
+***
+chain [0] = [
+[
+  Version: V3
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 2048 bits
+  modulus: 30365595292379735522124915323579181274210265285392058624713014024359013136375829208828492178491818863458757461262490831095568068291327510117266588942909722580629951545048709637674564657327338832249600428106332134820310171395852821541067140222507320613022360477539456550915822344738842802989155384718086474310028370737536274735978562407436874890983202337296096287347989568413685348435225418232881291710813273696348892017250070651624950797498483394131293938967140963392172385023756956310770285290466888462350408873170794645731122375244831886045567671813325341642668637201936831444002846105032068878472130788000425772773
+  public exponent: 65537
+  Validity: [From: Tue Feb 12 01:41:29 IST 2013,
+               To: Fri Feb 07 01:41:29 IST 2014]
+  Issuer: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  SerialNumber: [    511981a9]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: A7 C8 1E 67 1C 96 AB 6C   BF 68 B1 60 CA A7 5F A1  ...g...l.h.`.._.
+0010: A9 97 99 F1 30 D1 67 F1   7D 2E DA 13 F4 32 71 B5  ....0.g......2q.
+0020: 45 22 11 C1 58 D9 11 8C   73 51 A6 55 FA F1 F8 80  E"..X...sQ.U....
+0030: 18 43 EA 02 BC 87 73 D8   0B DD 31 C3 01 D2 0A 13  .C....s...1.....
+0040: 4C 5D 7C DC 33 03 0F CA   F3 23 00 68 D3 76 52 5E  L]..3....#.h.vR^
+0050: 11 E4 F5 E0 D8 34 32 11   00 1F 3E 9E B1 E0 7B 3E  .....42...>....>
+0060: DF 80 E5 00 91 1A A4 CA   E4 F1 08 BE F7 F6 F5 E1  ................
+0070: 3D 4E E9 F7 CB E5 9D 06   CA FC DD D8 5F 70 E9 61  =N.........._p.a
+0080: D5 B6 7C 45 6F 02 1D 23   79 6F 6C 99 76 D9 95 B6  ...Eo..#yol.v...
+0090: FC C7 E8 97 32 9F 04 8E   32 E1 AE E9 E1 51 54 94  ....2...2....QT.
+00A0: 16 9C 58 03 41 9E 38 7E   2A A2 6F E3 5F 68 56 16  ..X.A.8.*.o._hV.
+00B0: 6C 53 4E 77 BD 67 09 2F   C0 CF 52 DA 4B 37 A0 5F  lSNw.g./..R.K7._
+00C0: 65 EC DB BA FF 80 9B 2A   34 1A 11 80 6B 19 6F FB  e......*4...k.o.
+00D0: 42 5E 04 AA 22 92 92 8F   31 FA EE 1E 37 23 56 37  B^.."...1...7#V7
+00E0: 92 04 F9 DB 30 B8 53 06   6D 61 30 11 CD F5 B7 07  ....0.S.ma0.....
+00F0: F5 A1 98 16 94 F2 8E 88   26 ED B7 32 9C 0C B1 BF  ........&..2....
+
+]
+***
+*** ECDH ServerKeyExchange
+Server key: SunPKCS11-NSS EC public key, 256 bits (id 2, session object)
+  public x coord: 65191867682960891747275273440797493882465124498551520884104119374690379215068
+  public y coord: 17886462614603414798113076160052153259525059836638038972101835725418807138314
+  parameters: secp256r1 [NIST P-256, X9.62 prime256v1] (1.2.840.10045.3.1.7)
+*** ECDH ServerKeyExchange
+Server key: SunPKCS11-NSS EC public key, 256 bits (id 4, session object)
+  public x coord: 33266220021990777641639868966656956615120653882765933824207150916865996148880
+  public y coord: 101472263878722545647061128875759739491222317307747893893799177987445561558277
+  parameters: secp256r1 [NIST P-256, X9.62 prime256v1] (1.2.840.10045.3.1.7)
+*** ServerHelloDone
+*** ServerHelloDone
+New I/O worker #1, WRITE: TLSv1 Handshake, length = 1286
+New I/O worker #2, WRITE: TLSv1 Handshake, length = 1286
+New I/O worker #1, READ: TLSv1 Handshake, length = 70
+*** ECDHClientKeyExchange
+ECDH Public value:  { 4, 34, 250, 222, 100, 54, 214, 111, 119, 199, 170, 117, 134, 226, 148, 84, 238, 30, 41, 36, 10, 209, 86, 247, 171, 13, 13, 204, 222, 144, 208, 241, 244, 198, 46, 10, 224, 80, 13, 6, 33, 231, 168, 212, 145, 115, 33, 8, 223, 97, 217, 87, 108, 1, 218, 118, 56, 42, 11, 95, 198, 231, 84, 169, 119 }
+New I/O worker #2, READ: TLSv1 Handshake, length = 70
+*** ECDHClientKeyExchange
+ECDH Public value:  { 4, 177, 145, 215, 128, 244, 18, 16, 211, 153, 29, 155, 0, 246, 221, 91, 164, 14, 157, 32, 46, 167, 28, 209, 20, 143, 18, 40, 136, 232, 220, 168, 192, 65, 104, 199, 200, 174, 75, 177, 215, 99, 71, 37, 97, 16, 106, 39, 242, 173, 10, 41, 201, 59, 93, 143, 136, 197, 101, 125, 119, 177, 211, 179, 115 }
+SESSION KEYGEN:
+PreMaster Secret:
+0000: E2 1B A2 9A F3 85 D8 89   1D 4E E5 6B 77 7F A8 65  .........N.kw..e
+0010: F8 0D 00 93 40 21 8F 64   4C 01 51 2B CB D1 ABSESSION KEYGEN:
+PreMaster Secret:
+ AC0000: 13 F4 C4 90 EF 3A D6 67   B9 27 1C D1 9D 0A C5 BE  .....:.g.'......
+0010: D7 DE 9A 0C FA C8 63 44   4D 44 C7 D7 37 AD 10 2A  ......cDMD..7..*
+  ....@!.dL.Q+....
+CONNECTION KEYGEN:
+Client Nonce:
+0000: 51 1A 2F A5 3B CA 08 D6   57 CB 9A AC E3 23 C2 CE  Q./.;...W....#..
+0010: 14 1B E3 D7 B0 15 05 06   DF C2 8F 2F A6 FD 2E 48  .........../...H
+Server Nonce:
+0000: 51 1A 2F A6 D0 3B A5 E0   8A CE 5A E4 F7 30 0A BC  Q./..;....Z..0..
+0010: C7 93 BA 85 11 11 1C 35   ED A3 D3 72 15 B0 D5 38  .......5...r...8
+Master Secret:
+0000: B3 8F 4A 23 C9 67 87 4F   8E 64 03 BF DE CC 3F BC  ..J#.g.O.d....?.
+0010: 1F 9F F0 6B 10 25 4A BD   0D 21 D3 87 6D 63 97 A1  ...k.%J..!..mc..
+0020: 68 57 E0 EB C3 AD 95 75   7A 8C C9 6C 7A 90 52 48  hW.....uz..lz.RH
+Client MAC write Secret:
+0000: 68 B6 8F E7 39 45 78 0E   ED 8D F0 8B 97 4D 54 39  h...9Ex......MT9
+0010: BE 21 FB D1                                        .!..
+Server MAC write Secret:
+0000: 30 36 E1 9C 72 5D EE 88   B9 ED 46 FE 45 AD 19 32  06..r]....F.E..2
+0010: ED A8 34 D1                                        ..4.
+Client write key:
+0000: E9 3F 3F 70 3B 64 77 D1   2C 1F 48 17 7D 16 80 73  .??p;dw.,.H....s
+0010: A5 47 DC FB F3 1E 13 D4   C1 6A 16 C3 62 BC D6 10  .G.......j..b...
+Server write key:
+0000: EC 38 71 69 D2 1B 34 52   F2 7B 50 92 FE 6F A9 5E  .8qi..4R..P..o.^
+0010: 56 48 68 8E 7C 4A 9E B5   E0 9C E7 72 9F AC CA 42  VHh..J.....r...B
+Client write IV:
+0000: 52 E1 AA 15 2E CC 3D 35   1E AF 60 FF 10 55 24 DD  R.....=5..`..U$.
+Server write IV:
+0000: 3C BB DA B9 94 D8 87 EE   45 24 36 34 59 FB 55 10  <.......E$64Y.U.
+CONNECTION KEYGEN:
+Client Nonce:
+0000: 51 1A 2F A5 B0 5B 6D 7D   02 67 09 F9 15 CA 97 5E  Q./..[m..g.....^
+0010: 28 93 BB 15 D8 5D E5 6F   8E 4F F0 C8 52 E9 5D B7  (....].o.O..R.].
+Server Nonce:
+0000: 51 1A 2F A6 2B A9 80 08   ED 52 38 33 2E D4 3D CB  Q./.+....R83..=.
+0010: 32 EA 72 03 C8 E6 8D 88   32 AF 14 0C 93 0B 8D 16  2.r.....2.......
+Master Secret:
+0000: E9 D3 1A AF 04 CD 48 1E   A4 F7 BA B6 0E 8A 21 49  ......H.......!I
+0010: A6 D6 48 6B 3F 1F 82 E3   11 97 DE CA 84 7E 3D 6E  ..Hk?.........=n
+0020: C5 8C 43 6F D7 76 4C EC   38 A0 80 D5 C3 BD 46 B9  ..Co.vL.8.....F.
+Client MAC write Secret:
+0000: 1F C4 31 92 99 6A 70 0D   06 AC BF 15 A0 92 B6 AB  ..1..jp.........
+0010: C9 0D 49 61                                        ..Ia
+Server MAC write Secret:
+0000: 06 40 22 36 6F 06 A4 3C   08 77 8F 07 EA 36 4B 8D  .@"6o..<.w...6K.
+0010: 04 2F 83 6C                                        ./.l
+Client write key:
+0000: 69 A0 35 BA B4 25 9E C1   50 BA E0 09 3B A6 BD 1C  i.5..%..P...;...
+0010: A8 FA C9 BF 29 64 48 AF   08 90 C2 55 89 95 33 84  ....)dH....U..3.
+Server write key:
+0000: B3 11 DD 6E 59 E6 3F E4   B3 79 83 17 C8 37 C4 C0  ...nY.?..y...7..
+0010: 5F 9E 26 97 3B 73 A3 B8   8C 07 C8 A2 EF 40 0D DF  _.&.;s.......@..
+Client write IV:
+0000: 3C CB D4 F0 45 7D 32 64   EF F2 2E C9 02 29 F1 74  <...E.2d.....).t
+Server write IV:
+0000: A1 CC 12 77 FD 90 D9 66   89 56 9C 88 37 CF 4B DE  ...w...f.V..7.K.
+New I/O worker #2, READ: TLSv1 Change Cipher Spec, length = 1
+New I/O worker #1, READ: TLSv1 Change Cipher Spec, length = 1
+New I/O worker #1, READ: TLSv1 Handshake, length = 48
+*** Finished
+New I/O worker #2, READ: TLSv1 Handshake, length = 48
+*** Finished
+verify_data:  { 227, 221, 217, 202, 158, 43, 74, 210, 11, 184, 76, 153 }
+***
+New I/O worker #2, WRITE: TLSv1 Change Cipher Spec, length = 1
+verify_data:  { 222, 41, 141, 52, 237, 110, 12, 174, 253, 107, 159, 96 }
+***
+New I/O worker #1, WRITE: TLSv1 Change Cipher Spec, length = 1
+*** Finished
+verify_data:  { 155, 146, 38, 119, 37, 153, 78, 102, 1, 217, 140, 126 }
+***
+*** Finished
+verify_data:  { 201, 74, 191, 165, 198, 74, 220, 69, 48, 87, 159, 153 }
+***
+New I/O worker #1, WRITE: TLSv1 Handshake, length = 48
+New I/O worker #2, WRITE: TLSv1 Handshake, length = 48
+%% Cached server session: [Session-2, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA]
+%% Cached server session: [Session-1, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA]
+New I/O worker #2, called closeOutbound()
+New I/O worker #2, closeOutboundInternal()
+New I/O worker #2, SEND TLSv1 ALERT:  warning, description = close_notify
+New I/O worker #1, called closeOutbound()
+New I/O worker #1, closeOutboundInternal()
+New I/O worker #1, SEND TLSv1 ALERT:  warning, description = close_notify
+New I/O worker #2, WRITE: TLSv1 Alert, length = 32
+New I/O worker #2, called closeInbound()
+New I/O worker #1, WRITE: TLSv1 Alert, length = 32
+New I/O worker #1, called closeInbound()
+New I/O worker #1, fatal error: 80: Inbound closed before receiving peer's close_notify: possible truncation attack?
+javax.net.ssl.SSLException: Inbound closed before receiving peer's close_notify: possible truncation attack?
+%% Invalidated:  [Session-2, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA]
+New I/O worker #1, SEND TLSv1 ALERT:  fatal, description = internal_error
+New I/O worker #1, Exception sending alert: java.io.IOException: writer side was already closed.
+New I/O worker #2, fatal error: 80: Inbound closed before receiving peer's close_notify: possible truncation attack?
+javax.net.ssl.SSLException: Inbound closed before receiving peer's close_notify: possible truncation attack?
+%% Invalidated:  [Session-1, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA]
+New I/O worker #2, SEND TLSv1 ALERT:  fatal, description = internal_error
+New I/O worker #2, Exception sending alert: java.io.IOException: writer side was already closed.
+***
+found key for : selfsigned
+chain [0] = [
+[
+  Version: V3
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 2048 bits
+  modulus: 30365595292379735522124915323579181274210265285392058624713014024359013136375829208828492178491818863458757461262490831095568068291327510117266588942909722580629951545048709637674564657327338832249600428106332134820310171395852821541067140222507320613022360477539456550915822344738842802989155384718086474310028370737536274735978562407436874890983202337296096287347989568413685348435225418232881291710813273696348892017250070651624950797498483394131293938967140963392172385023756956310770285290466888462350408873170794645731122375244831886045567671813325341642668637201936831444002846105032068878472130788000425772773
+  public exponent: 65537
+  Validity: [From: Tue Feb 12 01:41:29 IST 2013,
+               To: Fri Feb 07 01:41:29 IST 2014]
+  Issuer: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  SerialNumber: [    511981a9]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: A7 C8 1E 67 1C 96 AB 6C   BF 68 B1 60 CA A7 5F A1  ...g...l.h.`.._.
+0010: A9 97 99 F1 30 D1 67 F1   7D 2E DA 13 F4 32 71 B5  ....0.g......2q.
+0020: 45 22 11 C1 58 D9 11 8C   73 51 A6 55 FA F1 F8 80  E"..X...sQ.U....
+0030: 18 43 EA 02 BC 87 73 D8   0B DD 31 C3 01 D2 0A 13  .C....s...1.....
+0040: 4C 5D 7C DC 33 03 0F CA   F3 23 00 68 D3 76 52 5E  L]..3....#.h.vR^
+0050: 11 E4 F5 E0 D8 34 32 11   00 1F 3E 9E B1 E0 7B 3E  .....42...>....>
+0060: DF 80 E5 00 91 1A A4 CA   E4 F1 08 BE F7 F6 F5 E1  ................
+0070: 3D 4E E9 F7 CB E5 9D 06   CA FC DD D8 5F 70 E9 61  =N.........._p.a
+0080: D5 B6 7C 45 6F 02 1D 23   79 6F 6C 99 76 D9 95 B6  ...Eo..#yol.v...
+0090: FC C7 E8 97 32 9F 04 8E   32 E1 AE E9 E1 51 54 94  ....2...2....QT.
+00A0: 16 9C 58 03 41 9E 38 7E   2A A2 6F E3 5F 68 56 16  ..X.A.8.*.o._hV.
+00B0: 6C 53 4E 77 BD 67 09 2F   C0 CF 52 DA 4B 37 A0 5F  lSNw.g./..R.K7._
+00C0: 65 EC DB BA FF 80 9B 2A   34 1A 11 80 6B 19 6F FB  e......*4...k.o.
+00D0: 42 5E 04 AA 22 92 92 8F   31 FA EE 1E 37 23 56 37  B^.."...1...7#V7
+00E0: 92 04 F9 DB 30 B8 53 06   6D 61 30 11 CD F5 B7 07  ....0.S.ma0.....
+00F0: F5 A1 98 16 94 F2 8E 88   26 ED B7 32 9C 0C B1 BF  ........&..2....
+
+]
+***
+adding as trusted cert:
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Issuer:  CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Algorithm: RSA; Serial number: 0x511981a9
+  Valid from Tue Feb 12 01:41:29 IST 2013 until Fri Feb 07 01:41:29 IST 2014
+
+trigger seeding of SecureRandom
+done seeding SecureRandom
+Using SSLEngineImpl.
+http request received
+Allow unsafe renegotiation: false
+Allow legacy hello messages: true
+Is initial handshake: true
+Is secure renegotiation: false
+New I/O worker #3, READ: TLSv1 Handshake, length = 226
+*** ClientHello, TLSv1
+RandomCookie:  GMT: 1360670375 bytes = { 108, 99, 101, 126, 123, 83, 130, 224, 158, 9, 221, 97, 191, 78, 183, 200, 127, 156, 121, 105, 20, 18, 101, 55, 143, 87, 68, 173 }
+Session ID:  {81, 26, 47, 166, 125, 82, 222, 1, 255, 148, 26, 126, 144, 86, 51, 194, 84, 183, 43, 65, 13, 156, 135, 86, 76, 148, 77, 14, 87, 224, 129, 2}
+Cipher Suites: [TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, Unknown 0x0:0x88, Unknown 0x0:0x87, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA, Unknown 0x0:0x84, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_RC4_128_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, Unknown 0x0:0x45, Unknown 0x0:0x44, SSL_DHE_DSS_WITH_RC4_128_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_RC4_128_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_RC4_128_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, Unknown 0x0:0x96, Unknown 0x0:0x41, SSL_RSA_WITH_RC4_128_SHA, SSL_RSA_WITH_RC4_128_MD5, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA, SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA, SSL_RSA_WITH_3DES_EDE_CBC_SHA]
+Compression Methods:  { 0 }
+Unsupported extension server_name, [host_name: v-cloudaloe-dev-01.local]
+Extension renegotiation_info, renegotiated_connection: <empty>
+Extension elliptic_curves, curve names: {secp256r1, secp384r1, secp521r1}
+Extension ec_point_formats, formats: [uncompressed]
+Unsupported extension type_35, data: 
+Unsupported extension type_13172, data: 
+Unsupported extension type_30031, data: 
+Unsupported extension status_request, data: 01:00:00:00:00
+***
+matching alias: selfsigned
+%% Created:  [Session-3, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA]
+*** ServerHello, TLSv1
+RandomCookie:  GMT: 1360670375 bytes = { 96, 6, 213, 41, 2, 190, 14, 253, 140, 182, 144, 162, 193, 222, 241, 203, 223, 122, 252, 112, 79, 183, 47, 96, 20, 56, 149, 193 }
+Session ID:  {81, 26, 47, 167, 32, 39, 127, 14, 94, 71, 8, 178, 124, 180, 158, 199, 167, 142, 224, 108, 173, 211, 113, 103, 218, 0, 151, 199, 174, 76, 50, 93}
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+Compression Method: 0
+Extension renegotiation_info, renegotiated_connection: <empty>
+***
+Cipher suite:  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+*** Certificate chain
+chain [0] = [
+[
+  Version: V3
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 2048 bits
+  modulus: 30365595292379735522124915323579181274210265285392058624713014024359013136375829208828492178491818863458757461262490831095568068291327510117266588942909722580629951545048709637674564657327338832249600428106332134820310171395852821541067140222507320613022360477539456550915822344738842802989155384718086474310028370737536274735978562407436874890983202337296096287347989568413685348435225418232881291710813273696348892017250070651624950797498483394131293938967140963392172385023756956310770285290466888462350408873170794645731122375244831886045567671813325341642668637201936831444002846105032068878472130788000425772773
+  public exponent: 65537
+  Validity: [From: Tue Feb 12 01:41:29 IST 2013,
+               To: Fri Feb 07 01:41:29 IST 2014]
+  Issuer: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  SerialNumber: [    511981a9]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: A7 C8 1E 67 1C 96 AB 6C   BF 68 B1 60 CA A7 5F A1  ...g...l.h.`.._.
+0010: A9 97 99 F1 30 D1 67 F1   7D 2E DA 13 F4 32 71 B5  ....0.g......2q.
+0020: 45 22 11 C1 58 D9 11 8C   73 51 A6 55 FA F1 F8 80  E"..X...sQ.U....
+0030: 18 43 EA 02 BC 87 73 D8   0B DD 31 C3 01 D2 0A 13  .C....s...1.....
+0040: 4C 5D 7C DC 33 03 0F CA   F3 23 00 68 D3 76 52 5E  L]..3....#.h.vR^
+0050: 11 E4 F5 E0 D8 34 32 11   00 1F 3E 9E B1 E0 7B 3E  .....42...>....>
+0060: DF 80 E5 00 91 1A A4 CA   E4 F1 08 BE F7 F6 F5 E1  ................
+0070: 3D 4E E9 F7 CB E5 9D 06   CA FC DD D8 5F 70 E9 61  =N.........._p.a
+0080: D5 B6 7C 45 6F 02 1D 23   79 6F 6C 99 76 D9 95 B6  ...Eo..#yol.v...
+0090: FC C7 E8 97 32 9F 04 8E   32 E1 AE E9 E1 51 54 94  ....2...2....QT.
+00A0: 16 9C 58 03 41 9E 38 7E   2A A2 6F E3 5F 68 56 16  ..X.A.8.*.o._hV.
+00B0: 6C 53 4E 77 BD 67 09 2F   C0 CF 52 DA 4B 37 A0 5F  lSNw.g./..R.K7._
+00C0: 65 EC DB BA FF 80 9B 2A   34 1A 11 80 6B 19 6F FB  e......*4...k.o.
+00D0: 42 5E 04 AA 22 92 92 8F   31 FA EE 1E 37 23 56 37  B^.."...1...7#V7
+00E0: 92 04 F9 DB 30 B8 53 06   6D 61 30 11 CD F5 B7 07  ....0.S.ma0.....
+00F0: F5 A1 98 16 94 F2 8E 88   26 ED B7 32 9C 0C B1 BF  ........&..2....
+
+]
+***
+*** ECDH ServerKeyExchange
+Server key: SunPKCS11-NSS EC public key, 256 bits (id 10, session object)
+  public x coord: 86173738990443668842245143927648869002477931918900063843761143575900795780902
+  public y coord: 98457967000987763285607664952576835032188887838593276974497601837673033236672
+  parameters: secp256r1 [NIST P-256, X9.62 prime256v1] (1.2.840.10045.3.1.7)
+*** ServerHelloDone
+New I/O worker #3, WRITE: TLSv1 Handshake, length = 1286
+New I/O worker #3, READ: TLSv1 Handshake, length = 70
+*** ECDHClientKeyExchange
+ECDH Public value:  { 4, 182, 171, 100, 186, 228, 170, 63, 143, 170, 36, 1, 102, 88, 97, 244, 179, 66, 100, 149, 117, 220, 80, 103, 122, 26, 238, 139, 219, 95, 99, 105, 212, 204, 4, 81, 1, 192, 36, 196, 132, 126, 174, 151, 180, 183, 141, 23, 179, 193, 0, 86, 229, 199, 28, 21, 64, 22, 71, 157, 110, 118, 157, 148, 196 }
+SESSION KEYGEN:
+PreMaster Secret:
+0000: 60 C0 FF 6A BB 4E 41 74   F0 20 7C 30 4F 28 73 CB  `..j.NAt. .0O(s.
+0010: A7 01 62 09 79 F1 16 B0   68 F6 3B D1 4F 84 AC 75  ..b.y...h.;.O..u
+CONNECTION KEYGEN:
+Client Nonce:
+0000: 51 1A 2F A7 6C 63 65 7E   7B 53 82 E0 9E 09 DD 61  Q./.lce..S.....a
+0010: BF 4E B7 C8 7F 9C 79 69   14 12 65 37 8F 57 44 AD  .N....yi..e7.WD.
+Server Nonce:
+0000: 51 1A 2F A7 60 06 D5 29   02 BE 0E FD 8C B6 90 A2  Q./.`..)........
+0010: C1 DE F1 CB DF 7A FC 70   4F B7 2F 60 14 38 95 C1  .....z.pO./`.8..
+Master Secret:
+0000: 2F C3 84 D5 82 8D 94 AE   11 41 A8 A4 38 A3 3B 9C  /........A..8.;.
+0010: B9 C3 E5 A0 AA 7E AC BA   F4 7B 4F 13 36 E9 72 FE  ..........O.6.r.
+0020: 0C 37 E2 C8 48 78 5A C9   D5 40 97 EE 45 47 6F 17  .7..HxZ..@..EGo.
+Client MAC write Secret:
+0000: F4 E3 D8 28 7F 5A 79 2D   E4 36 86 F8 C2 4E 6F 86  ...(.Zy-.6...No.
+0010: 8A 89 B0 D6                                        ....
+Server MAC write Secret:
+0000: 55 88 98 23 7C 8B BE A6   85 2B 10 45 D8 7A 69 64  U..#.....+.E.zid
+0010: 06 DC B7 5A                                        ...Z
+Client write key:
+0000: 19 5F 5F 27 96 86 E8 F2   FD 3B C8 3D D7 73 08 B1  .__'.....;.=.s..
+0010: A0 97 E1 DF F2 86 A4 1E   65 95 7D C6 76 00 C4 3C  ........e...v..<
+Server write key:
+0000: 68 4B 1B 41 54 E1 35 C6   E8 58 38 6E 8B 29 72 D0  hK.AT.5..X8n.)r.
+0010: CE 42 1F BC D0 99 BC A6   C6 32 83 14 6B 31 39 61  .B.......2..k19a
+Client write IV:
+0000: AE 2E 61 04 86 DB D0 AE   6B 70 4E BE 88 CE 2F 9E  ..a.....kpN.../.
+Server write IV:
+0000: 63 24 29 48 0D 29 56 22   C7 EA C0 DE BE 31 C0 59  c$)H.)V".....1.Y
+New I/O worker #3, READ: TLSv1 Change Cipher Spec, length = 1
+New I/O worker #3, READ: TLSv1 Handshake, length = 48
+*** Finished
+verify_data:  { 85, 49, 137, 3, 35, 47, 229, 197, 255, 231, 36, 226 }
+***
+New I/O worker #3, WRITE: TLSv1 Change Cipher Spec, length = 1
+*** Finished
+verify_data:  { 155, 110, 73, 100, 167, 14, 230, 111, 160, 106, 163, 198 }
+***
+New I/O worker #3, WRITE: TLSv1 Handshake, length = 48
+%% Cached server session: [Session-3, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA]
+***
+found key for : selfsigned
+chain [0] = [
+[
+  Version: V3
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 2048 bits
+  modulus: 30365595292379735522124915323579181274210265285392058624713014024359013136375829208828492178491818863458757461262490831095568068291327510117266588942909722580629951545048709637674564657327338832249600428106332134820310171395852821541067140222507320613022360477539456550915822344738842802989155384718086474310028370737536274735978562407436874890983202337296096287347989568413685348435225418232881291710813273696348892017250070651624950797498483394131293938967140963392172385023756956310770285290466888462350408873170794645731122375244831886045567671813325341642668637201936831444002846105032068878472130788000425772773
+  public exponent: 65537
+  Validity: [From: Tue Feb 12 01:41:29 IST 2013,
+               To: Fri Feb 07 01:41:29 IST 2014]
+  Issuer: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  SerialNumber: [    511981a9]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: A7 C8 1E 67 1C 96 AB 6C   BF 68 B1 60 CA A7 5F A1  ...g...l.h.`.._.
+0010: A9 97 99 F1 30 D1 67 F1   7D 2E DA 13 F4 32 71 B5  ....0.g......2q.
+0020: 45 22 11 C1 58 D9 11 8C   73 51 A6 55 FA F1 F8 80  E"..X...sQ.U....
+0030: 18 43 EA 02 BC 87 73 D8   0B DD 31 C3 01 D2 0A 13  .C....s...1.....
+0040: 4C 5D 7C DC 33 03 0F CA   F3 23 00 68 D3 76 52 5E  L]..3....#.h.vR^
+0050: 11 E4 F5 E0 D8 34 32 11   00 1F 3E 9E B1 E0 7B 3E  .....42...>....>
+0060: DF 80 E5 00 91 1A A4 CA   E4 F1 08 BE F7 F6 F5 E1  ................
+0070: 3D 4E E9 F7 CB E5 9D 06   CA FC DD D8 5F 70 E9 61  =N.........._p.a
+0080: D5 B6 7C 45 6F 02 1D 23   79 6F 6C 99 76 D9 95 B6  ...Eo..#yol.v...
+0090: FC C7 E8 97 32 9F 04 8E   32 E1 AE E9 E1 51 54 94  ....2...2....QT.
+00A0: 16 9C 58 03 41 9E 38 7E   2A A2 6F E3 5F 68 56 16  ..X.A.8.*.o._hV.
+00B0: 6C 53 4E 77 BD 67 09 2F   C0 CF 52 DA 4B 37 A0 5F  lSNw.g./..R.K7._
+00C0: 65 EC DB BA FF 80 9B 2A   34 1A 11 80 6B 19 6F FB  e......*4...k.o.
+00D0: 42 5E 04 AA 22 92 92 8F   31 FA EE 1E 37 23 56 37  B^.."...1...7#V7
+00E0: 92 04 F9 DB 30 B8 53 06   6D 61 30 11 CD F5 B7 07  ....0.S.ma0.....
+00F0: F5 A1 98 16 94 F2 8E 88   26 ED B7 32 9C 0C B1 BF  ........&..2....
+
+]
+***
+adding as trusted cert:
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Issuer:  CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Algorithm: RSA; Serial number: 0x511981a9
+  Valid from Tue Feb 12 01:41:29 IST 2013 until Fri Feb 07 01:41:29 IST 2014
+
+trigger seeding of SecureRandom
+done seeding SecureRandom
+Using SSLEngineImpl.
+http request received
+Allow unsafe renegotiation: false
+Allow legacy hello messages: true
+Is initial handshake: true
+Is secure renegotiation: false
+New I/O worker #4, called closeOutbound()
+New I/O worker #4, closeOutboundInternal()
+New I/O worker #4, SEND TLSv1 ALERT:  warning, description = close_notify
+New I/O worker #4, WRITE: TLSv1 Alert, length = 2
+***
+found key for : selfsigned
+chain [0] = [
+[
+  Version: V3
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 2048 bits
+  modulus: 30365595292379735522124915323579181274210265285392058624713014024359013136375829208828492178491818863458757461262490831095568068291327510117266588942909722580629951545048709637674564657327338832249600428106332134820310171395852821541067140222507320613022360477539456550915822344738842802989155384718086474310028370737536274735978562407436874890983202337296096287347989568413685348435225418232881291710813273696348892017250070651624950797498483394131293938967140963392172385023756956310770285290466888462350408873170794645731122375244831886045567671813325341642668637201936831444002846105032068878472130788000425772773
+  public exponent: 65537
+  Validity: [From: Tue Feb 12 01:41:29 IST 2013,
+               To: Fri Feb 07 01:41:29 IST 2014]
+  Issuer: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  SerialNumber: [    511981a9]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: A7 C8 1E 67 1C 96 AB 6C   BF 68 B1 60 CA A7 5F A1  ...g...l.h.`.._.
+0010: A9 97 99 F1 30 D1 67 F1   7D 2E DA 13 F4 32 71 B5  ....0.g......2q.
+0020: 45 22 11 C1 58 D9 11 8C   73 51 A6 55 FA F1 F8 80  E"..X...sQ.U....
+0030: 18 43 EA 02 BC 87 73 D8   0B DD 31 C3 01 D2 0A 13  .C....s...1.....
+0040: 4C 5D 7C DC 33 03 0F CA   F3 23 00 68 D3 76 52 5E  L]..3....#.h.vR^
+0050: 11 E4 F5 E0 D8 34 32 11   00 1F 3E 9E B1 E0 7B 3E  .....42...>....>
+0060: DF 80 E5 00 91 1A A4 CA   E4 F1 08 BE F7 F6 F5 E1  ................
+0070: 3D 4E E9 F7 CB E5 9D 06   CA FC DD D8 5F 70 E9 61  =N.........._p.a
+0080: D5 B6 7C 45 6F 02 1D 23   79 6F 6C 99 76 D9 95 B6  ...Eo..#yol.v...
+0090: FC C7 E8 97 32 9F 04 8E   32 E1 AE E9 E1 51 54 94  ....2...2....QT.
+00A0: 16 9C 58 03 41 9E 38 7E   2A A2 6F E3 5F 68 56 16  ..X.A.8.*.o._hV.
+00B0: 6C 53 4E 77 BD 67 09 2F   C0 CF 52 DA 4B 37 A0 5F  lSNw.g./..R.K7._
+00C0: 65 EC DB BA FF 80 9B 2A   34 1A 11 80 6B 19 6F FB  e......*4...k.o.
+00D0: 42 5E 04 AA 22 92 92 8F   31 FA EE 1E 37 23 56 37  B^.."...1...7#V7
+00E0: 92 04 F9 DB 30 B8 53 06   6D 61 30 11 CD F5 B7 07  ....0.S.ma0.....
+00F0: F5 A1 98 16 94 F2 8E 88   26 ED B7 32 9C 0C B1 BF  ........&..2....
+
+]
+***
+adding as trusted cert:
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Issuer:  CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Algorithm: RSA; Serial number: 0x511981a9
+  Valid from Tue Feb 12 01:41:29 IST 2013 until Fri Feb 07 01:41:29 IST 2014
+
+trigger seeding of SecureRandom
+done seeding SecureRandom
+Using SSLEngineImpl.
+http request received
+Allow unsafe renegotiation: false
+Allow legacy hello messages: true
+Is initial handshake: true
+Is secure renegotiation: false
+New I/O worker #1, READ: TLSv1 Handshake, length = 176
+*** ClientHello, TLSv1
+RandomCookie:  GMT: 1360670795 bytes = { 222, 126, 212, 135, 28, 11, 184, 104, 113, 69, 47, 75, 195, 120, 2, 86, 10, 124, 199, 163, 240, 166, 154, 181, 111, 235, 135, 165 }
+Session ID:  {}
+Cipher Suites: [TLS_EMPTY_RENEGOTIATION_INFO_SCSV, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, Unknown 0x0:0x88, Unknown 0x0:0x87, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_ECDH_RSA_WITH_AES_256_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA, Unknown 0x0:0x84, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_RC4_128_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_RC4_128_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, Unknown 0x0:0x45, Unknown 0x0:0x44, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_RC4_128_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_RC4_128_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, Unknown 0x0:0x96, Unknown 0x0:0x41, SSL_RSA_WITH_RC4_128_SHA, SSL_RSA_WITH_RC4_128_MD5, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA, SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA, SSL_RSA_WITH_3DES_EDE_CBC_SHA]
+Compression Methods:  { 0 }
+Unsupported extension server_name, [host_name: v-cloudaloe-dev-01.local]
+Extension elliptic_curves, curve names: {secp256r1, secp384r1, secp521r1}
+Extension ec_point_formats, formats: [uncompressed]
+Unsupported extension type_35, data: 
+Unsupported extension type_13172, data: 
+***
+matching alias: selfsigned
+%% Created:  [Session-4, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA]
+*** ServerHello, TLSv1
+RandomCookie:  GMT: 1360670795 bytes = { 255, 207, 115, 49, 131, 126, 106, 26, 229, 4, 143, 63, 16, 17, 69, 175, 55, 88, 182, 187, 242, 122, 3, 228, 149, 69, 214, 248 }
+Session ID:  {81, 26, 48, 75, 68, 113, 232, 109, 125, 113, 105, 157, 147, 132, 97, 214, 58, 158, 47, 63, 131, 77, 246, 123, 87, 127, 209, 124, 122, 157, 136, 116}
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+Compression Method: 0
+Extension renegotiation_info, renegotiated_connection: <empty>
+***
+Cipher suite:  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+*** Certificate chain
+chain [0] = [
+[
+  Version: V3
+  Subject: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 2048 bits
+  modulus: 30365595292379735522124915323579181274210265285392058624713014024359013136375829208828492178491818863458757461262490831095568068291327510117266588942909722580629951545048709637674564657327338832249600428106332134820310171395852821541067140222507320613022360477539456550915822344738842802989155384718086474310028370737536274735978562407436874890983202337296096287347989568413685348435225418232881291710813273696348892017250070651624950797498483394131293938967140963392172385023756956310770285290466888462350408873170794645731122375244831886045567671813325341642668637201936831444002846105032068878472130788000425772773
+  public exponent: 65537
+  Validity: [From: Tue Feb 12 01:41:29 IST 2013,
+               To: Fri Feb 07 01:41:29 IST 2014]
+  Issuer: CN=matan safriel, OU=cladata, O=cladata, L=Tel-Aviv, ST=Unknown, C=IL
+  SerialNumber: [    511981a9]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: A7 C8 1E 67 1C 96 AB 6C   BF 68 B1 60 CA A7 5F A1  ...g...l.h.`.._.
+0010: A9 97 99 F1 30 D1 67 F1   7D 2E DA 13 F4 32 71 B5  ....0.g......2q.
+0020: 45 22 11 C1 58 D9 11 8C   73 51 A6 55 FA F1 F8 80  E"..X...sQ.U....
+0030: 18 43 EA 02 BC 87 73 D8   0B DD 31 C3 01 D2 0A 13  .C....s...1.....
+0040: 4C 5D 7C DC 33 03 0F CA   F3 23 00 68 D3 76 52 5E  L]..3....#.h.vR^
+0050: 11 E4 F5 E0 D8 34 32 11   00 1F 3E 9E B1 E0 7B 3E  .....42...>....>
+0060: DF 80 E5 00 91 1A A4 CA   E4 F1 08 BE F7 F6 F5 E1  ................
+0070: 3D 4E E9 F7 CB E5 9D 06   CA FC DD D8 5F 70 E9 61  =N.........._p.a
+0080: D5 B6 7C 45 6F 02 1D 23   79 6F 6C 99 76 D9 95 B6  ...Eo..#yol.v...
+0090: FC C7 E8 97 32 9F 04 8E   32 E1 AE E9 E1 51 54 94  ....2...2....QT.
+00A0: 16 9C 58 03 41 9E 38 7E   2A A2 6F E3 5F 68 56 16  ..X.A.8.*.o._hV.
+00B0: 6C 53 4E 77 BD 67 09 2F   C0 CF 52 DA 4B 37 A0 5F  lSNw.g./..R.K7._
+00C0: 65 EC DB BA FF 80 9B 2A   34 1A 11 80 6B 19 6F FB  e......*4...k.o.
+00D0: 42 5E 04 AA 22 92 92 8F   31 FA EE 1E 37 23 56 37  B^.."...1...7#V7
+00E0: 92 04 F9 DB 30 B8 53 06   6D 61 30 11 CD F5 B7 07  ....0.S.ma0.....
+00F0: F5 A1 98 16 94 F2 8E 88   26 ED B7 32 9C 0C B1 BF  ........&..2....
+
+]
+***
+*** ECDH ServerKeyExchange
+Server key: SunPKCS11-NSS EC public key, 256 bits (id 14, session object)
+  public x coord: 72926790749169665068733185840937059453052508728068701830601158359133071468659
+  public y coord: 33066261499446013979989122013104260767313609466968144666315907760929796049822
+  parameters: secp256r1 [NIST P-256, X9.62 prime256v1] (1.2.840.10045.3.1.7)
+*** ServerHelloDone
+New I/O worker #1, WRITE: TLSv1 Handshake, length = 1286
+New I/O worker #1, READ: TLSv1 Handshake, length = 70
+*** ECDHClientKeyExchange
+ECDH Public value:  { 4, 233, 74, 228, 86, 213, 176, 68, 110, 244, 63, 184, 95, 237, 36, 200, 18, 68, 162, 129, 223, 85, 168, 205, 196, 219, 26, 85, 155, 150, 134, 100, 243, 102, 184, 242, 122, 155, 85, 9, 136, 84, 196, 166, 130, 249, 42, 163, 220, 208, 189, 116, 148, 172, 67, 57, 71, 254, 174, 103, 1, 2, 130, 46, 196 }
+SESSION KEYGEN:
+PreMaster Secret:
+0000: 56 71 CB DE 3B 96 A1 40   01 A7 14 87 F9 6D 2E 31  Vq..;..@.....m.1
+0010: 68 CE EE 81 0D 9E 27 4A   50 D9 77 D9 4E 0E 19 92  h.....'JP.w.N...
+CONNECTION KEYGEN:
+Client Nonce:
+0000: 51 1A 30 4B DE 7E D4 87   1C 0B B8 68 71 45 2F 4B  Q.0K.......hqE/K
+0010: C3 78 02 56 0A 7C C7 A3   F0 A6 9A B5 6F EB 87 A5  .x.V........o...
+Server Nonce:
+0000: 51 1A 30 4B FF CF 73 31   83 7E 6A 1A E5 04 8F 3F  Q.0K..s1..j....?
+0010: 10 11 45 AF 37 58 B6 BB   F2 7A 03 E4 95 45 D6 F8  ..E.7X...z...E..
+Master Secret:
+0000: 89 BE D9 90 4D C6 68 13   92 4C 38 60 DF 1B 6F 96  ....M.h..L8`..o.
+0010: 25 61 CF 91 04 64 7D A7   58 42 71 39 C8 63 DC CA  %a...d..XBq9.c..
+0020: 45 DA 38 67 02 4F FB 27   1E 93 C3 C9 0E FC 93 40  E.8g.O.'.......@
+Client MAC write Secret:
+0000: 7F 71 F3 FE 21 79 8E 28   CE 59 2A DA 15 08 9E 69  .q..!y.(.Y*....i
+0010: 82 ED 3A FF                                        ..:.
+Server MAC write Secret:
+0000: 8A BD DD 85 4B 8F 98 21   26 D2 26 31 67 6C 17 59  ....K..!&.&1gl.Y
+0010: 18 B1 BF 3C                                        ...<
+Client write key:
+0000: BC 45 7F 14 DF 8B 2A 5B   C3 6A 74 2B FA 1F 5A 55  .E....*[.jt+..ZU
+0010: 61 B2 5F E3 4B 40 11 C6   37 E5 BF AB C8 0C 26 7A  a._.K@..7.....&z
+Server write key:
+0000: 64 7C 24 8B 05 9F 18 B3   78 C9 45 EB 7C 85 76 CC  d.$.....x.E...v.
+0010: 71 7E A3 A6 0E E3 08 36   88 F3 F6 E3 62 3B 0B 20  q......6....b;. 
+Client write IV:
+0000: 1D 77 FA D0 5A 43 B4 F8   DB C0 48 27 5C D3 99 75  .w..ZC....H'\..u
+Server write IV:
+0000: 00 27 4C EE E0 C8 B5 5E   37 35 3A 84 AE 74 0E 3C  .'L....^75:..t.<
+New I/O worker #1, READ: TLSv1 Change Cipher Spec, length = 1
+New I/O worker #1, READ: TLSv1 Handshake, length = 48
+*** Finished
+verify_data:  { 25, 91, 43, 26, 75, 74, 26, 56, 237, 91, 244, 41 }
+***
+New I/O worker #1, WRITE: TLSv1 Change Cipher Spec, length = 1
+*** Finished
+verify_data:  { 57, 178, 190, 241, 40, 145, 246, 11, 135, 226, 134, 70 }
+***
+New I/O worker #1, WRITE: TLSv1 Handshake, length = 48
+%% Cached server session: [Session-4, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA]
+New I/O worker #1, READ: TLSv1 Alert, length = 32
+New I/O worker #1, RECV TLSv1 ALERT:  fatal, bad_certificate
+New I/O worker #1, fatal: engine already closed.  Rethrowing javax.net.ssl.SSLException: Received fatal alert: bad_certificate
+New I/O worker #1, fatal: engine already closed.  Rethrowing javax.net.ssl.SSLException: Received fatal alert: bad_certificate
+New I/O worker #1, called closeOutbound()
+New I/O worker #1, closeOutboundInternal()
+New I/O worker #1, SEND TLSv1 ALERT:  warning, description = close_notify
+New I/O worker #1, WRITE: TLSv1 Alert, length = 32
+New I/O worker #1, called closeInbound()
+New I/O worker #1, fatal: engine already closed.  Rethrowing javax.net.ssl.SSLException: Inbound closed before receiving peer's close_notify: possible truncation attack?
