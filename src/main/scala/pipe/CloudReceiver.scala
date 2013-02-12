@@ -15,6 +15,9 @@ import java.net.InetSocketAddress
 import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLEngine
 import javax.net.ssl.TrustManagerFactory
+import javax.net.ssl.KeyManagerFactory
+import java.security.KeyStore
+import java.io.FileInputStream
 
 import org.jboss.netty.handler.ssl.SslHandler
 
@@ -32,12 +35,31 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 	  
 	  val trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm)
 	  
-	  sslContext.init(null, null, null) // need to enter keystore, cipher suites etc through these params
+	  //println("Trust manager default algorithm " + TrustManagerFactory.getDefaultAlgorithm)
+
+	  // Load the keystore from disk
+	  val keyStore = KeyStore.getInstance("JKS")
+	  val keyStoreFile = new FileInputStream("keystore.jks")
+	  val keyStorePassword = "password"
+	  keyStore.load(keyStoreFile, keyStorePassword.toCharArray())
+      keyStoreFile.close()
+      
+      val keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm)
+      keyManagerFactory.init(keyStore, keyStorePassword.toCharArray())
+      
+      
+      trustManagerFactory.init(keyStore)   
+	  
+	  sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), null) // need to enter keystore, cipher suites etc through these params
 	  //sslContext.init(null, trustManagerFactory.getTrustManagers(), null) // need to enter keystore, cipher suites etc through these params	  
 	  //println("supported: " + sslContext.getSupportedSSLParameters.toString())	  
 	  val sslEngine : SSLEngine = sslContext.createSSLEngine()
 	  sslEngine.setUseClientMode(false) // javax.net.ssl.SSLEngine's special way of saying 'play a server on the SSL handshake'
-	  sslEngine.setNeedClientAuth(true) // require client auth (http://docs.oracle.com/javase/6/docs/api/javax/net/ssl/SSLEngine.html#setNeedClientAuth(boolean))
+	  sslEngine.setNeedClientAuth(false) // require client auth (http://docs.oracle.com/javase/6/docs/api/javax/net/ssl/SSLEngine.html#setNeedClientAuth(boolean))
+	  
+	  println("supported cipher suites: " + sslEngine.getSupportedCipherSuites.mkString(", "))
+	  println("enabled cipher suites: " + sslEngine.getEnabledCipherSuites.mkString(", "))
+	  
 	  sslEngine
 	  } 
   
