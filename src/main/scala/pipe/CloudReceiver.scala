@@ -12,8 +12,7 @@ import org.jboss.netty.channel.MessageEvent
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory
 import org.jboss.netty.channel.SimpleChannelUpstreamHandler
 import org.jboss.netty.handler.codec.http._
-import java.util.concurrent.Executors
-import java.net.InetSocketAddress
+import org.jboss.netty.handler.ssl.SslHandler
 
 // packages for setting up for SSL before passing over to Netty to operate SSL
 import javax.net.ssl.SSLContext
@@ -22,8 +21,6 @@ import javax.net.ssl.TrustManagerFactory
 import javax.net.ssl.KeyManagerFactory
 import java.security.KeyStore
 import java.io.FileInputStream
-
-import org.jboss.netty.handler.ssl.SslHandler
 
 /**
  * Setup a netty pipeline
@@ -64,7 +61,6 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 		trustManagerFactory.init(keyStore)   
 		sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), null) // need to enter keystore, cipher suites etc through these params
 		
-
 		def getSslEngine: SSLEngine = {
 		  val sslEngine : SSLEngine = sslContext.createSSLEngine()
 		  sslEngine.setUseClientMode(false) 	// javax.net.ssl.SSLEngine's special way of saying 'play a server on the SSL handshake'
@@ -74,7 +70,7 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 	}
 		
 	/**
-	 * Create a netty pipeline
+	 * netty pipeline creator method
 	 */
 	override def getPipeline: ChannelPipeline = {	
 	  val pipeline = Channels.pipeline() 
@@ -101,24 +97,13 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 	}
 }
 
+/**
+ * handle a request or stream that came in through the pipeline
+ */
 class HttpRequestHandler extends SimpleChannelUpstreamHandler {
 	println("Http connection made")
 	override def messageReceived(channelHandlerContext: ChannelHandlerContext, messageEvent: MessageEvent){
 	  println("Http connection made from " + messageEvent.getRemoteAddress.toString)
 	  println("Http message received: \n" + messageEvent.getMessage.toString)
 	} 
-}
-
-class CloudReceiver {
-
- 	println("CloudReceiver object starting")
-				
-	val incomingListener = new ServerBootstrap(
-	    new NioServerSocketChannelFactory(Executors.newCachedThreadPool, Executors.newCachedThreadPool))
-		
-	incomingListener.setPipelineFactory(new HttpServerPipelineFactory)
-
-    // Bind and start to accept incoming connections.
-    incomingListener.bind(new InetSocketAddress(8081))
-    incomingListener.bind(new InetSocketAddress(8082))	    
 }
