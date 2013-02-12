@@ -30,12 +30,12 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
   	/**
 	* Creates an SSLEngine for netty to use.
 	*  
-	* Netty needs this set up for it before letting it run SSL.
-	* At run-time, The SSL handshake may fail due to any of a myriad of issues on either network side.
+	* Netty needs this set up handled for it before letting it run SSL.
+	* At run-time, The SSL handshake may fail due to any of a myriad of justified issues on either network side.
 	* On failure, the Java infrastructure will not always surface enough details of the root cause (such as the handshake process details),  
 	* And so elevated logging through -Djavax.net.debug=ssl:handshake may be used for analysis.
 	* 
-	* 'SSL family' Algorithms that can be chosen are found (respectively of Java version) at:
+	* 'SSL family' Algorithms that can be chosen are found (respectively of the Java version) at:
 	* http://docs.oracle.com/javase/6/docs/technotes/guides/security/StandardNames.html#Cipher and 
 	* http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#SSLContext 
 	* 
