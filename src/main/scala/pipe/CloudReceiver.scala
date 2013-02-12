@@ -1,5 +1,5 @@
 /**
- * TODO: Implement exception handling
+ * TODO: Implement exception handling for stuff like connection closing, handshake failure 
  */
 
 package pipe
@@ -24,7 +24,6 @@ import java.security.KeyStore
 import java.io.FileInputStream
 
 import org.jboss.netty.handler.ssl.SslHandler
-
 
 /**
  * Setup a netty pipeline
@@ -58,22 +57,15 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 		keyStore.load(keyStoreFile, keyStorePassword.toCharArray())
 		keyStoreFile.close()
 	
-		// initialize both a KeyManagerFactory and a TrustManagerFactory with the key store
+		// initialize both a KeyManagerFactory and a TrustManagerFactory with the keystore
 		val keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm)
 		val trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm)
 		keyManagerFactory.init(keyStore, keyStorePassword.toCharArray())
 		trustManagerFactory.init(keyStore)   
 		sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), null) // need to enter keystore, cipher suites etc through these params
 		
+
 		def getSslEngine: SSLEngine = {
-		  
-	   	  //val sslContext : SSLContext = SSLContext.getDefault
-		  //println("default parameters " + sslContext.getDefaultSSLParameters().toString())
-		  //println("Trust manager default algorithm " + TrustManagerFactory.getDefaultAlgorithm)
-		  //println("supported: " + sslContext.getSupportedSSLParameters.toString())
-		  //println("supported cipher suites: " + sslEngine.getSupportedCipherSuites.mkString(", "))
-		  //println("enabled cipher suites: " + sslEngine.getEnabledCipherSuites.mkString(", "))
-	     	  
 		  val sslEngine : SSLEngine = sslContext.createSSLEngine()
 		  sslEngine.setUseClientMode(false) 	// javax.net.ssl.SSLEngine's special way of saying 'play a server on the SSL handshake'
 		  sslEngine.setNeedClientAuth(false) 	// turn to 'true' to require client auth (http://docs.oracle.com/javase/6/docs/api/javax/net/ssl/SSLEngine.html#setNeedClientAuth(boolean))
@@ -93,13 +85,18 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 	  
 	  //uncomment the following line for SSL
 	  //pipeline.addLast("ssl", sslHandler);
+	  
 	  pipeline.addLast("decoder", new HttpRequestDecoder())
+	  
 	  // Uncomment the following line if you don't want to handle HttpChunks.
 	  //pipeline.addLast("aggregator", new HttpChunkAggregator(1048576));
 	  pipeline.addLast("encoder", new HttpResponseEncoder())
+	  
 	  // Remove the following line if you don't want automatic content compression.
 	  //pipeline.addLast("deflater", new HttpContentCompressor())
+	  
 	  pipeline.addLast("handler", new HttpRequestHandler())
+	  
 	  pipeline
 	}
 }
