@@ -104,6 +104,7 @@ class HttpRequestHandler extends SimpleChannelUpstreamHandler {
 	println("Http connection made")
 	override def messageReceived(channelHandlerContext: ChannelHandlerContext, messageEvent: MessageEvent){
 	  println("Http connection made from " + messageEvent.getRemoteAddress.toString)
-	  println("Http message received: \n" + messageEvent.getMessage.toString)
+	  //println("Http message received: \n" + messageEvent.getMessage.toString)
+	  println("Http message received: \n" + messageEvent.getMessage)	  
 	} 
 }

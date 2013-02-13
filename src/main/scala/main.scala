@@ -5,8 +5,8 @@ object runner {
 		
 		println("main starting")
 				
-		val broker = new Broker
-		val cloudReceiver = new CloudReceiver
+		val broker = new Broker(8082)
+		val cloudReceiver = new CloudReceiver(8081)
 		
 	}
 }
