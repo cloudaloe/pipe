@@ -103,8 +103,10 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 class HttpRequestHandler extends SimpleChannelUpstreamHandler {
 	println("Http connection made")
 	override def messageReceived(channelHandlerContext: ChannelHandlerContext, messageEvent: MessageEvent){
-	  println("Http connection made from " + messageEvent.getRemoteAddress.toString)
+	  println("Http message received from " + messageEvent.getRemoteAddress.toString)
+	  val payload = messageEvent.getMessage.asInstanceOf[HttpRequest]
+	  println("Http message uri is " + payload.getUri())
+	  println("Http message method is " + payload.getMethod)
 	  //println("Http message received: \n" + messageEvent.getMessage.toString)
-	  println("Http message received: \n" + messageEvent.getMessage)	  
 	} 
 }
