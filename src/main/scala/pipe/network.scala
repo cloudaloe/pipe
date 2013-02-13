@@ -7,20 +7,20 @@ package pipe
 import org.jboss.netty.bootstrap.ServerBootstrap
 import org.jboss.netty.channel.{ ChannelPipeline, ChannelPipelineFactory, Channels }
 import org.jboss.netty.channel.ChannelHandlerContext
+import org.jboss.netty.channel.ChannelStateEvent
 import org.jboss.netty.channel.ExceptionEvent
 import org.jboss.netty.channel.MessageEvent
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory
 import org.jboss.netty.channel.SimpleChannelUpstreamHandler
 import org.jboss.netty.handler.codec.http._
 import org.jboss.netty.handler.ssl.SslHandler
-
-// packages for setting up for SSL before passing over to Netty to operate SSL
 import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLEngine
 import javax.net.ssl.TrustManagerFactory
 import javax.net.ssl.KeyManagerFactory
 import java.security.KeyStore
 import java.io.FileInputStream
+
 
 /**
  * Setup a netty pipeline
@@ -98,15 +98,37 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 }
 
 /**
- * handle a request or stream that came in through the pipeline
+ * handle a connection that comes in through the pipeline
  */
 class HttpRequestHandler extends SimpleChannelUpstreamHandler {
 	println("Http connection made")
+	
 	override def messageReceived(channelHandlerContext: ChannelHandlerContext, messageEvent: MessageEvent){
 	  println("Http message received from " + messageEvent.getRemoteAddress.toString)
-	  val payload = messageEvent.getMessage.asInstanceOf[HttpRequest]
-	  println("Http message uri is " + payload.getUri())
-	  println("Http message method is " + payload.getMethod)
-	  //println("Http message received: \n" + messageEvent.getMessage.toString)
-	} 
+	  val payload = messageEvent.getMessage
+	  // It's surely an HttpRequest, so asInstanceOf[HttpRequest] could have been equally used for this particular case.
+	  // Was just curious about using match, which is the preferred style in the more general case.
+	  match { 
+	    case payload: HttpRequest => { 
+	    	println("Http message uri is " + payload.getUri)
+	    	println("Http message method is " + payload.getMethod)
+	    	//println("Http message received: \n" + messageEvent.getMessage.toString)
+	    }
+	  } 
+	}
+	
+	/* 
+	 * This will fire when a peer is disconnected
+	 */
+	override def channelDisconnected(channelHandlerContext: ChannelHandlerContext, channelStateEvent: ChannelStateEvent){
+		println("Channel disconnected from peer " + channelStateEvent.getState + " " + channelStateEvent)
+	}
+	
+	/*
+	 * Error handler for cases e.g. the peer has unexpectedly closed the connection
+	 */
+	override def exceptionCaught(channelHandlerContext: ChannelHandlerContext, exceptionEvent: ExceptionEvent){
+	  println("Error detected on connection: " + exceptionEvent.getCause.toString())
+	  // print more details if this ever becomes very helpful
+	}
 }
