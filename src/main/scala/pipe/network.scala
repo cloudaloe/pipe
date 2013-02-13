@@ -4,6 +4,7 @@
 
 package pipe
 
+//import scala.tools.nsc.interpreter.ILoop.{break, breakIf}
 import org.jboss.netty.bootstrap.ServerBootstrap
 import org.jboss.netty.channel.{ ChannelPipeline, ChannelPipelineFactory, Channels }
 import org.jboss.netty.channel.ChannelHandlerContext
@@ -103,6 +104,10 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 class HttpRequestHandler extends SimpleChannelUpstreamHandler {
 	println("Http connection made")
 	
+	override def channelConnected(channelHandlerContext: ChannelHandlerContext, channelStateEvent: ChannelStateEvent){
+		println("Channel connected to peer " + channelHandlerContext.getChannel.getRemoteAddress)	  
+	}
+	
 	override def messageReceived(channelHandlerContext: ChannelHandlerContext, messageEvent: MessageEvent){
 	  println("Http message received from " + messageEvent.getRemoteAddress.toString)
 	  val payload = messageEvent.getMessage
@@ -111,8 +116,18 @@ class HttpRequestHandler extends SimpleChannelUpstreamHandler {
 	  match { 
 	    case payload: HttpRequest => { 
 	    	println("Http message uri is " + payload.getUri)
-	    	println("Http message method is " + payload.getMethod)
+	    	println("Http message method is " + payload.getMethod.toString)
 	    	//println("Http message received: \n" + messageEvent.getMessage.toString)
+	    	
+	    	payload.getMethod match {
+	    	  case HttpMethod.POST => {
+	    	    println("Handling POST request")
+	    	  }
+	    	  case other => {
+	    		println("Request of type " + other + " will be ignored")
+	    	  }
+	    		  
+	    	}
 	    }
 	  } 
 	}
@@ -121,14 +136,14 @@ class HttpRequestHandler extends SimpleChannelUpstreamHandler {
 	 * This will fire when a peer is disconnected
 	 */
 	override def channelDisconnected(channelHandlerContext: ChannelHandlerContext, channelStateEvent: ChannelStateEvent){
-		println("Channel disconnected from peer " + channelStateEvent.getState + " " + channelStateEvent)
+	  println("Channel disconnected from peer " + channelHandlerContext.getChannel.getRemoteAddress)
 	}
 	
 	/*
 	 * Error handler for cases e.g. the peer has unexpectedly closed the connection
 	 */
 	override def exceptionCaught(channelHandlerContext: ChannelHandlerContext, exceptionEvent: ExceptionEvent){
-	  println("Error detected on connection: " + exceptionEvent.getCause.toString())
+	  println("Error detected on connection: " + exceptionEvent.getCause.toString)
 	  // print more details if this ever becomes very helpful
 	}
 }
