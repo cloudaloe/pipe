@@ -5,16 +5,16 @@
 package pipe
 
 //import scala.tools.nsc.interpreter.ILoop.{break, breakIf}
-import org.jboss.netty.bootstrap.ServerBootstrap
-import org.jboss.netty.channel.{ ChannelPipeline, ChannelPipelineFactory, Channels }
-import org.jboss.netty.channel.ChannelHandlerContext
-import org.jboss.netty.channel.ChannelStateEvent
-import org.jboss.netty.channel.ExceptionEvent
-import org.jboss.netty.channel.MessageEvent
-import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory
-import org.jboss.netty.channel.SimpleChannelUpstreamHandler
-import org.jboss.netty.handler.codec.http._
-import org.jboss.netty.handler.ssl.SslHandler
+import io.netty.bootstrap.ServerBootstrap
+import io.netty.channel.{ ChannelPipeline, ChannelPipelineFactory, Channels }
+import io.netty.channel.ChannelHandlerContext
+import io.netty.channel.ChannelStateEvent
+import io.netty.channel.ExceptionEvent
+import io.netty.channel.MessageEvent
+import io.netty.channel.socket.nio.NioServerSocketChannelFactory
+import io.netty.channel.SimpleChannelUpstreamHandler
+import io.netty.handler.codec.http._
+import io.netty.handler.ssl.SslHandler
 import javax.net.ssl.SSLContext
 import javax.net.ssl.SSLEngine
 import javax.net.ssl.TrustManagerFactory

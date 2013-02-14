@@ -4,15 +4,15 @@
 
 package pipe
 
-import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory
-import org.jboss.netty.bootstrap.ServerBootstrap
+import io.netty.channel.socket.nio.NioServerSocketChannelFactory
+import io.netty.bootstrap.ServerBootstrap
 import java.util.concurrent.Executors
 import java.net.InetSocketAddress
-import org.jboss.netty.channel.Channel
-import org.jboss.netty.channel.ChannelFuture
-import org.jboss.netty.bootstrap.ClientBootstrap
-import org.jboss.netty.handler.codec.http._
-import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory
+import io.netty.channel.Channel
+import io.netty.channel.ChannelFuture
+import io.netty.bootstrap.ClientBootstrap
+import io.netty.handler.codec.http._
+import io.netty.channel.socket.nio.NioClientSocketChannelFactory
 
 
 class Broker (incomingPort: Int, cloudPort: Int) {
