@@ -26,7 +26,7 @@ import java.io.FileInputStream
 /**
  * Setup a netty pipeline
  */
-class HttpServerPipelineFactory extends ChannelPipelineFactory {
+class HttpServerPipelineFactory(ssl: Boolean, sslServer: Boolean = true) extends ChannelPipelineFactory {
 
   	/**
 	* Creates an SSLEngine for netty to use.
@@ -64,8 +64,13 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 		
 		def getSslEngine: SSLEngine = {
 		  val sslEngine : SSLEngine = sslContext.createSSLEngine()
-		  sslEngine.setUseClientMode(false) 	// javax.net.ssl.SSLEngine's special way of saying 'play a server on the SSL handshake'
-		  sslEngine.setNeedClientAuth(false) 	// turn to 'true' to require client auth (http://docs.oracle.com/javase/6/docs/api/javax/net/ssl/SSLEngine.html#setNeedClientAuth(boolean))
+		  if (sslServer) { 
+		    sslEngine.setUseClientMode(false) // javax.net.ssl.SSLEngine's special way of saying 'play a server on the SSL handshake'
+		    sslEngine.setNeedClientAuth(false) 	// turn to 'true' to require client auth (http://docs.oracle.com/javase/6/docs/api/javax/net/ssl/SSLEngine.html#setNeedClientAuth(boolean))
+		  }
+		  else { 
+		    sslEngine.setUseClientMode(true) 
+		  }
 		  sslEngine
 		}
 	}
@@ -74,22 +79,22 @@ class HttpServerPipelineFactory extends ChannelPipelineFactory {
 	 * netty pipeline creator method
 	 */
 	override def getPipeline: ChannelPipeline = {	
-	  val pipeline = Channels.pipeline() 
-	  val sslHandler = new SslHandler(sslSetup.getSslEngine)
-	  // The following (setCloseOnSSLException) is necessary due to the odd backwards compatible default behavior of netty 3.5,
-	  // as without it println(sslHandler.getCloseOnSSLException) still shows that this defaults to false.
-	  sslHandler.setCloseOnSSLException(true);   
-	  
-	  //uncomment the following line for SSL
-	  //pipeline.addLast("ssl", sslHandler);
-	  
+	  val pipeline = Channels.pipeline()
+	  if (ssl) {
+	    val sslHandler = new SslHandler(sslSetup.getSslEngine)
+	    // The following (setCloseOnSSLException) is necessary due to the odd backwards compatible default behavior of netty 3.5,
+	    // as without it println(sslHandler.getCloseOnSSLException) still shows that this defaults to false.
+	    sslHandler.setCloseOnSSLException(true);   
+	    pipeline.addLast("ssl", sslHandler);
+	  }
+  
 	  pipeline.addLast("decoder", new HttpRequestDecoder())
 	  
-	  // Uncomment the following line if you don't want to handle HttpChunks.
+	  // Uncomment the following line to aggregate http chunks
 	  //pipeline.addLast("aggregator", new HttpChunkAggregator(1048576));
 	  pipeline.addLast("encoder", new HttpResponseEncoder())
 	  
-	  // Remove the following line if you don't want automatic content compression.
+	  // Remove the following line to compress content
 	  //pipeline.addLast("deflater", new HttpContentCompressor())
 	  
 	  pipeline.addLast("handler", new HttpRequestHandler())

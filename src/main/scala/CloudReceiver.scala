@@ -16,7 +16,7 @@ class CloudReceiver (port: Int) {
 	val incomingListener = new ServerBootstrap(
 	    new NioServerSocketChannelFactory(Executors.newCachedThreadPool, Executors.newCachedThreadPool))
 		
-	incomingListener.setPipelineFactory(new HttpServerPipelineFactory)
+	incomingListener.setPipelineFactory(new HttpServerPipelineFactory(ssl=true, sslServer=true))
 
     // Bind and start to accept incoming connections.
     incomingListener.bind(new InetSocketAddress(port))
