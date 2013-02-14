@@ -8,4 +8,6 @@ package pipe
 object Config {
 	val keyStorePath = "keystore.jks"
     val sslProtocol = "TLS"
+    val incomingPort = 8082
+    val cloudPort = 8081
 }
