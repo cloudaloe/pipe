@@ -1,0 +1,11 @@
+package pipe
+
+/**
+ * Configuration object class.
+ * TODO: obtain the configuration from file, or https://github.com/typesafehub/config | https://github.com/twitter/ostrich#readme
+ *
+ */
+object Config {
+	val keyStorePath = "keystore.jks"
+    val sslProtocol = "TLS"
+}

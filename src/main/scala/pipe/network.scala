@@ -45,12 +45,12 @@ class HttpServerPipelineFactory(ssl: Boolean, sslServer: Boolean = true) extends
 	*/
 	object sslSetup {
 
-		val sslContext : SSLContext = SSLContext.getInstance("TLS")
+		val sslContext : SSLContext = SSLContext.getInstance(Config.sslProtocol)
 		//ssl sslContext : SSLContext = SSLContext.getInstance("SSLv3") 
 		  
 		// Load the keystore from disk
 		val keyStore = KeyStore.getInstance("JKS")
-		val keyStoreFile = new FileInputStream("keystore.jks") 
+		val keyStoreFile = new FileInputStream(Config.keyStorePath) 
 		val keyStorePassword = "password"
 		keyStore.load(keyStoreFile, keyStorePassword.toCharArray())
 		keyStoreFile.close()
