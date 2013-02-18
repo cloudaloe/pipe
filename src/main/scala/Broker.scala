@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit
 import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import io.netty.channel.ChannelHandlerContext
+import io.netty.channel.ChannelFutureListener
 
 /**
  * Setup a client pipeline 
@@ -33,7 +34,7 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	  override def initChannel(channel: Channel){
 	    val pipeline = channel.pipeline
 	    if (ssl){
-			val sslHandler = new SslHandler(new sslSetup(ssl).getSslEngine)
+			var sslHandler = new SslHandler(new sslSetup(false).getSslEngine)
 			pipeline.addLast("ssl", sslHandler);
 	    }
 		    //pipeline.addLast("httpCodec", new HttpServerCodec)
@@ -47,7 +48,10 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 		//pipeline.addLast(executor, "handler", new MyHandler());
 	    
 	    pipeline.addLast("handler", new httpClientHandler)	    
-		    	    
+
+	    //var handshakeFuture = sslHandler.handshake()
+		//handshakeFuture.sync()
+	    
 		pipeline	    
 		}
 	}  
@@ -77,25 +81,27 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
  						.channel(classOf[NioSocketChannel])
  						.handler(new clientInitializer(ssl))
 
- 	var channel = outgoingListener.connect(new InetSocketAddress("localhost", cloudPort)).sync().channel()
- 	
- 	println(channel.isOpen.toString + channel.isActive.toString + channel.isRegistered.toString + channel.localAddress + channel.remoteAddress)
- 	
- 	if (!channel.isOpen()) {
-      println("Connection to cloud receiver failed: ") // + future.getCause + future.getCause.printStackTrace)
-    } //TODO: also check for success v.s. not completed. Will this hang if the server stalls?
- 	
-	var request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/hello")
-	//request.headers.set(HttpHeaders.Names.HOST, "localhost")
-    //request.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
-    //request.headers.set(HttpHeaders.Names.ACCEPT_ENCODING, HttpHeaders.Values.GZIP)
-	//println(request.getMethod)
-	//println(request.getProtocolVersion)
-	//println(request.getUri)
-	var channelFuture = channel.write(request)
-	//channel.flush
-	//channel.closeFuture.sync
-	channelFuture.await(7, TimeUnit.SECONDS)
-	println("isDone :", channelFuture.isDone)
-	println("isSuccess :", channelFuture.isSuccess)
+ 	val connectFuture = outgoingListener.connect(new InetSocketAddress("localhost", cloudPort)).addListener(new ChannelFutureListener(){
+		    def operationComplete(channelFuture: ChannelFuture){
+		    	println("in operation complete 2")		      
+			  	println(channelFuture.channel.isOpen.toString + channelFuture.channel.isActive.toString + channelFuture.channel.isRegistered.toString + channelFuture.channel.localAddress + channelFuture.channel.remoteAddress)
+			 	if (!channelFuture.channel.isOpen()) {
+			      println("Connection to cloud receiver failed: ") // + future.getCause + future.getCause.printStackTrace)
+			    } //TODO: also check for success v.s. not completed. Will this hang if the server stalls?
+			 	
+				var request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/hello")
+				//request.headers.set(HttpHeaders.Names.HOST, "localhost")
+			    //request.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
+			    //request.headers.set(HttpHeaders.Names.ACCEPT_ENCODING, HttpHeaders.Values.GZIP)
+				//println(request.getMethod)
+				//println(request.getProtocolVersion)
+				//println(request.getUri)
+				var writeFuture = channelFuture.channel.write(request)
+				//channel.flush
+				//channel.closeFuture.sync
+				channelFuture.await(7, TimeUnit.SECONDS)
+				println("isDone :", channelFuture.isDone)
+				println("isSuccess :", channelFuture.isSuccess)
+		    }
+		  })				
 }

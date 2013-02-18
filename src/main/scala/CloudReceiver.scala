@@ -23,6 +23,7 @@ import io.netty.handler.codec.serialization.ObjectDecoder
 import io.netty.handler.codec.http.HttpServerCodec
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
+import io.netty.handler.ssl
 
 class CloudReceiver (port: Int, ssl: Boolean) {
 
@@ -68,6 +69,11 @@ class CloudReceiver (port: Int, ssl: Boolean) {
 		}
 		*/
 		
+	    /*
+		override def channelActive(channelHandlerContext: ChannelHandlerContext){
+			var channelFuture = channelHandlerContext.pipeline.get(classOf[SslHandler]).handshake
+		}*/
+	  
 		override def messageReceived(channelHandlerContext: ChannelHandlerContext, httpRequest: FullHttpRequest){
 			println("Http message received from " + channelHandlerContext.channel.remoteAddress)
 			println("Http message uri is " + httpRequest.getUri)
