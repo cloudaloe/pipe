@@ -24,7 +24,7 @@ import io.netty.handler.codec.http.HttpServerCodec
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
 
-class CloudReceiver (port: Int) {
+class CloudReceiver (port: Int, ssl: Boolean) {
 
 	class serverInitializer(ssl: Boolean) extends ChannelInitializer[Channel] {
 	  //override def inboundBufferUpdate(ctx: ChannelHandlerContext, in: ByteBuf){}
@@ -49,7 +49,9 @@ class CloudReceiver (port: Int) {
 		pipeline
 	  }
 	  
-	  override def exceptionCaught(ctx: ChannelHandlerContext, e: Throwable){}
+	  override def exceptionCaught(ctx: ChannelHandlerContext, e: Throwable){
+	    println(e.printStackTrace)
+	  }
 	}
 	
 	/**
@@ -101,9 +103,9 @@ class CloudReceiver (port: Int) {
 	val incomingListener = new ServerBootstrap()
  		incomingListener.group(new NioEventLoopGroup, new NioEventLoopGroup)
  						.channel(classOf[NioServerSocketChannel])
- 						.childHandler(new serverInitializer(ssl=true))
+ 						.childHandler(new serverInitializer(ssl))
  	
- 	incomingListener.bind(new InetSocketAddress(port)).sync().channel().closeFuture().sync()
+ 	incomingListener.bind(new InetSocketAddress(port)).sync().channel()
  						
     //new NioServerSocketChannelFactory(Executors.newCachedThreadPool, Executors.newCachedThreadPool))
 		
