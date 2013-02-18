@@ -6,13 +6,6 @@ package pipe
 
 //import scala.tools.nsc.interpreter.ILoop.{break, breakIf}
 import io.netty.bootstrap.ServerBootstrap
-import io.netty.channel.{ ChannelPipeline, ChannelPipelineFactory, Channels }
-import io.netty.channel.ChannelHandlerContext
-import io.netty.channel.ChannelStateEvent
-import io.netty.channel.ExceptionEvent
-import io.netty.channel.MessageEvent
-import io.netty.channel.socket.nio.NioServerSocketChannelFactory
-import io.netty.channel.SimpleChannelUpstreamHandler
 import io.netty.handler.codec.http._
 import io.netty.handler.ssl.SslHandler
 import javax.net.ssl.SSLContext
@@ -70,6 +63,9 @@ class sslSetup (sslServer: Boolean){
 	}
 }
 
+
+/**
+
 /**
  * Setup a server pipeline 
  */
@@ -102,56 +98,7 @@ class HttpServerPipelineFactory(ssl: Boolean, sslServer: Boolean = true) extends
 	}
 }
 
-/**
- * handle a connection that comes in through the pipeline
- */
-class HttpRequestHandler extends SimpleChannelUpstreamHandler {
-	println("Http connection made")
-	
-	override def channelConnected(channelHandlerContext: ChannelHandlerContext, channelStateEvent: ChannelStateEvent){
-		println("Channel connected to peer " + channelHandlerContext.getChannel.getRemoteAddress)	  
-	}
-	
-	override def messageReceived(channelHandlerContext: ChannelHandlerContext, messageEvent: MessageEvent){
-	  println("Http message received from " + messageEvent.getRemoteAddress.toString)
-	  val payload = messageEvent.getMessage
-	  // It's surely an HttpRequest, so asInstanceOf[HttpRequest] could have been equally used for this particular case.
-	  // Was just curious about using match, which is the preferred style in the more general case.
-	  match { 
-	    case payload: HttpRequest => { 
-	    	println("Http message uri is " + payload.getUri)
-	    	println("Http message method is " + payload.getMethod.toString)
-	    	//println("Http message received: \n" + messageEvent.getMessage.toString)
-	    	
-	    	payload.getMethod match {
-	    	  case HttpMethod.POST => {
-	    	    println("Handling POST request")
-	    	  }
-	    	  case other => {
-	    		println("Request of type " + other + " will be ignored")
-	    	  }
-	    		  
-	    	}
-	    }
-	    case other => { println("Unexpected payload type received")}
-	  } 
-	}
-	
-	/* 
-	 * This will fire when a peer is disconnected
-	 */
-	override def channelDisconnected(channelHandlerContext: ChannelHandlerContext, channelStateEvent: ChannelStateEvent){
-	  println("Channel disconnected from peer " + channelHandlerContext.getChannel.getRemoteAddress)
-	}
-	
-	/*
-	 * Error handler for cases e.g. the peer has unexpectedly closed the connection
-	 */
-	override def exceptionCaught(channelHandlerContext: ChannelHandlerContext, exceptionEvent: ExceptionEvent){
-	  println("Error detected on connection: " + exceptionEvent.getCause.toString)
-	  // print more details if this ever becomes very helpful
-	}
-}
+
 
 /**
  * Setup a client pipeline 
@@ -191,3 +138,4 @@ class HttpResponseHandler extends SimpleChannelUpstreamHandler {
 	  println("Http response received")
 	}
 }
+*/

@@ -26,27 +26,27 @@ import io.netty.channel.ChannelInboundMessageHandlerAdapter
 
 class CloudReceiver (port: Int) {
 
-	class serverInitializer extends ChannelInitializer {
+	class serverInitializer(ssl: Boolean) extends ChannelInitializer[Channel] {
 	  //override def inboundBufferUpdate(ctx: ChannelHandlerContext, in: ByteBuf){}
 	  
 	  override def initChannel(channel: Channel){
 	    val pipeline = channel.pipeline
-	    
-		val sslHandler = new SslHandler(new sslSetup(true).getSslEngine)
-		// The following (setCloseOnSSLException) is necessary due to the odd backwards compatible default behavior of netty 3.5,
-		// as without it println(sslHandler.getCloseOnSSLException) still shows that this defaults to false.
-		//sslHandler.setCloseOnSSLException(true);   
-		pipeline.addLast("ssl", sslHandler);
-	    //pipeline.addLast("httpCodec", new HttpServerCodec)
+	    if (ssl){
+			val sslHandler = new SslHandler(new sslSetup(true).getSslEngine)
+			pipeline.addLast("ssl", sslHandler);
+	    }
+		    //pipeline.addLast("httpCodec", new HttpServerCodec)
 	    pipeline.addLast("HttpRequestDecoder", new HttpRequestDecoder)
 	    //pipeline.addLast("HttpResponseDecoder", new HttpResponseDecoder)      
 		pipeline.addLast("httpAggregator", new HttpObjectAggregator(65536))
-		  
 		//pipeline.addLast("chunkedWriter", new ChunkedWriteHandler)
-		            
 		// MyHandler contains code that blocks so add it with the
 		// EventExecutor to the pipeline.
-		//pipeline.addLast(executor, "handler", new MyHandler());       
+		//pipeline.addLast(executor, "handler", new MyHandler());
+		
+		pipeline.addLast("handler", new HttpRequestHandler)
+		
+		pipeline
 	  }
 	  
 	  override def exceptionCaught(ctx: ChannelHandlerContext, e: Throwable){}
@@ -56,7 +56,7 @@ class CloudReceiver (port: Int) {
 	 * handle a connection that comes in through the pipeline
 	 */
 	class HttpRequestHandler extends ChannelInboundMessageHandlerAdapter[FullHttpRequest] {
-		println("Http connection made")
+		//println("Http connection made")
 		
 		/*
 		override def channelConnected(channelHandlerContext: ChannelHandlerContext, channelStateEvent: ChannelStateEvent){
@@ -96,15 +96,14 @@ class CloudReceiver (port: Int) {
 		*/
 	} 	
   
-  
  	println("CloudReceiver object starting")
 				
 	val incomingListener = new ServerBootstrap()
  		incomingListener.group(new NioEventLoopGroup, new NioEventLoopGroup)
  						.channel(classOf[NioServerSocketChannel])
- 						.childHandler(new serverInitializer)
+ 						.childHandler(new serverInitializer(ssl=true))
  	
- 	incomingListener.bind(new InetSocketAddress(port)).sync().channel().closeFuture().sync(); 						
+ 	incomingListener.bind(new InetSocketAddress(port)).sync().channel().closeFuture().sync()
  						
     //new NioServerSocketChannelFactory(Executors.newCachedThreadPool, Executors.newCachedThreadPool))
 		
