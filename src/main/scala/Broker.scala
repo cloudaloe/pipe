@@ -13,6 +13,8 @@ import io.netty.channel.ChannelFuture
 import io.netty.bootstrap.ClientBootstrap
 import io.netty.handler.codec.http._
 import io.netty.channel.socket.nio.NioClientSocketChannelFactory
+import io.netty.channel.nio.NioEventLoopGroup
+import io.netty.channel.socket.nio.NioServerSocketChannel
 
 
 class Broker (incomingPort: Int, cloudPort: Int) {
@@ -20,16 +22,14 @@ class Broker (incomingPort: Int, cloudPort: Int) {
 // this behavior can of course be changed.
     
  	println("Broker object starting")
-				
-	val incomingListener = new ServerBootstrap(
-	    new NioServerSocketChannelFactory(Executors.newCachedThreadPool, Executors.newCachedThreadPool))
-		
-	incomingListener.setPipelineFactory(new HttpServerPipelineFactory(ssl=false))
-
-    // Bind and start to accept incoming connections.
-    incomingListener.bind(new InetSocketAddress(incomingPort))
-    
-    
+	
+ 	val incomingListener = new ServerBootstrap()
+ 		incomingListener.group(new NioEventLoopGroup, new NioEventLoopGroup)
+ 						.channel(classOf[NioServerSocketChannel])
+ 						.childHandler(new serverInitializer)
+ 	
+ 	incomingListener.bind(incomingPort).sync().channel().closeFuture().sync(); 						
+ 	
     val outgoingListener = new ClientBootstrap(
 	    new NioClientSocketChannelFactory(Executors.newCachedThreadPool, Executors.newCachedThreadPool))
 		
