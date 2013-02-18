@@ -83,15 +83,15 @@ class HttpServerPipelineFactory(ssl: Boolean, sslServer: Boolean = true) extends
 	    val sslHandler = new SslHandler(new sslSetup(sslServer).getSslEngine)
 	    // The following (setCloseOnSSLException) is necessary due to the odd backwards compatible default behavior of netty 3.5,
 	    // as without it println(sslHandler.getCloseOnSSLException) still shows that this defaults to false.
-	    sslHandler.setCloseOnSSLException(true);   
+	    //sslHandler.setCloseOnSSLException(true);   
 	    pipeline.addLast("ssl", sslHandler);
 	  }
   
-	  pipeline.addLast("decoder", new HttpRequestDecoder())
+	  pipeline.addLast("decoder", new HttpObjectDecoder())
 	  
 	  // Uncomment the following line to aggregate http chunks
 	  //pipeline.addLast("aggregator", new HttpChunkAggregator(1048576));
-	  pipeline.addLast("encoder", new HttpResponseEncoder())
+	  pipeline.addLast("encoder", new HttpObjectEncoder())
 	  
 	  // Remove the following line to compress content
 	  //pipeline.addLast("deflater", new HttpContentCompressor())
