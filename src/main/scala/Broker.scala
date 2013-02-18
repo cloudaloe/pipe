@@ -83,7 +83,6 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 
  	val connectFuture = outgoingListener.connect(new InetSocketAddress("localhost", cloudPort)).addListener(new ChannelFutureListener(){
 		    def operationComplete(channelFuture: ChannelFuture){
-		    	println("in operation complete 2")		      
 			  	println(channelFuture.channel.isOpen.toString + channelFuture.channel.isActive.toString + channelFuture.channel.isRegistered.toString + channelFuture.channel.localAddress + channelFuture.channel.remoteAddress)
 			 	if (!channelFuture.channel.isOpen()) {
 			      println("Connection to cloud receiver failed: ") // + future.getCause + future.getCause.printStackTrace)
