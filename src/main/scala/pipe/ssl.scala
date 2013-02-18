@@ -77,6 +77,7 @@ class HttpServerPipelineFactory(ssl: Boolean, sslServer: Boolean = true) extends
 	  val pipeline = Channels.pipeline()
 	  if (ssl) {
 	    val sslHandler = new SslHandler(new sslSetup(sslServer).getSslEngine)
+	    println(sslHandler.isIssueHandshake)
 	    // The following (setCloseOnSSLException) is necessary due to the odd backwards compatible default behavior of netty 3.5,
 	    // as without it println(sslHandler.getCloseOnSSLException) still shows that this defaults to false.
 	    //sslHandler.setCloseOnSSLException(true);   

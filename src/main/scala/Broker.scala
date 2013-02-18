@@ -38,8 +38,9 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	    }
 		    //pipeline.addLast("httpCodec", new HttpServerCodec)
 	    pipeline.addLast("HttpRequestEncoder", new HttpClientCodec)
-	    //pipeline.addLast("HttpResponseDecoder", new HttpResponseDecoder)      
-		//pipeline.addLast("httpAggregator", new HttpObjectAggregator(65536))
+	    //pipeline.addLast("inflater", new HttpContentDecompressor());
+	    
+	    pipeline.addLast("httpAggregator", new HttpObjectAggregator(65536))
 		//pipeline.addLast("chunkedWriter", new ChunkedWriteHandler)
 		// MyHandler contains code that blocks so add it with the
 		// EventExecutor to the pipeline.
@@ -92,9 +93,9 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	//println(request.getProtocolVersion)
 	//println(request.getUri)
 	var channelFuture = channel.write(request)
-	channel.flush
+	//channel.flush
 	//channel.closeFuture.sync
-	channelFuture.await(2, TimeUnit.SECONDS)
+	channelFuture.await(7, TimeUnit.SECONDS)
 	println("isDone :", channelFuture.isDone)
 	println("isSuccess :", channelFuture.isSuccess)
 }

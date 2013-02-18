@@ -43,7 +43,9 @@ class CloudReceiver (port: Int, ssl: Boolean) {
 		// MyHandler contains code that blocks so add it with the
 		// EventExecutor to the pipeline.
 		//pipeline.addLast(executor, "handler", new MyHandler());
-		
+
+	    //pipeline.addLast("encoder", new HttpResponseEncoder)	    
+	    
 		pipeline.addLast("handler", new HttpRequestHandler)
 		
 		pipeline
