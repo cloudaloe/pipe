@@ -21,7 +21,7 @@ import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelFutureListener
-
+import akka.actor.Actor
 
 
 /**
@@ -65,23 +65,28 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	class httpClientHandler extends ChannelInboundMessageHandlerAdapter[HttpResponse]{
 	  
 		override def messageReceived(ctx: ChannelHandlerContext, response: HttpResponse){
-			println(response.getStatus)
+			println("http response status: " + response.getStatus)
 		}
 		
 		override def exceptionCaught(ctx: ChannelHandlerContext, e: Throwable){
-			println(e.printStackTrace)
+			println("exception at httpClientHandler" + e.printStackTrace)
 		}	
 	}
 	
-	object writer{
+	object writer {
 	  var canWrite=false
+	  var request: DefaultHttpRequest = _
 	  def write(msg: String){
 		  if (canWrite){
-	 		  var request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/hello")
+	 		  request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/"+msg)
 	 		  //request.headers.set(HttpHeaders.Names.HOST, "localhost")
 	 		  //request.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
 	 		  //request.headers.set(HttpHeaders.Names.ACCEPT_ENCODING, HttpHeaders.Values.GZIP)
-	 		  var writeFuture = channel.write(request)
+	 		  var writeFuture = channel.write(request).addListener(new ChannelFutureListener(){
+	 			  def operationComplete(channelFuture: ChannelFuture){
+	 				  println("write finished")
+	 			  }
+	 		  })
 	 		  //channel.flush
 	 		  //channel.closeFuture.sync
 	 		  //channelFuture.await(7, TimeUnit.SECONDS)
@@ -114,9 +119,14 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 			 	else {
 				 	channel = channelFuture.channel
 				 	writer.canWrite=true
+				 	start	
 			 	}
 		    }
 		  })
 
-	
+	def start{ 
+ 	  writer.write("aaa") 
+ 	  writer.write("bbb")
+ 	}
+		  
 }
