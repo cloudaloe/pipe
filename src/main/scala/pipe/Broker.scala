@@ -56,7 +56,7 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 		}	
 	}
 	
-	object writer {
+	object writer { // pending refactoring of course
 	  var canWrite=false
 	  var request: DefaultHttpRequest = _
 	  def write(msg: String){
