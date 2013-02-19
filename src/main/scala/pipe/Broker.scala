@@ -19,11 +19,9 @@ import io.netty.channel.ChannelFutureListener
 import io.netty.channel.socket.nio.NioSocketChannel
 //import akka.actor.Actor
 
-
 /**
  * Send out to the cloud
  */
-
 class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
   
 	/**
@@ -36,22 +34,11 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 			var sslHandler = new SslHandler(new sslSetup(false).getSslEngine)
 			pipeline.addLast("ssl", sslHandler);
 	    }
-		    //pipeline.addLast("httpCodec", new HttpServerCodec)
 	    pipeline.addLast("HttpRequestEncoder", new HttpClientCodec)
 	    //pipeline.addLast("inflater", new HttpContentDecompressor());
-	    
 	    //pipeline.addLast("httpAggregator", new HttpObjectAggregator(65536))
 		//pipeline.addLast("chunkedWriter", new ChunkedWriteHandler)
-		// MyHandler contains code that blocks so add it with the
-		// EventExecutor to the pipeline.
-		//pipeline.addLast(executor, "handler", new MyHandler());
-	    
 	    pipeline.addLast("handler", new httpClientHandler)	    
-
-	    //var handshakeFuture = sslHandler.handshake()
-		//handshakeFuture.sync()
-	    
-		//pipeline	    
 		}
 	}  
 	
@@ -74,20 +61,12 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	  var request: DefaultHttpRequest = _
 	  def write(msg: String){
 		  if (canWrite){
-	 		  request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.POST, "/"+msg)
-	 		  //request.headers.set(HttpHeaders.Names.HOST, "localhost")
-	 		  //request.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
-	 		  //request.headers.set(HttpHeaders.Names.ACCEPT_ENCODING, HttpHeaders.Values.GZIP)
+	 		  request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/"+msg)
 	 		  var writeFuture = channel.write(request).addListener(new ChannelFutureListener(){
 	 			  def operationComplete(channelFuture: ChannelFuture){
 	 				  println("write finished")
 	 			  }
 	 		  })
-	 		  //channel.flush
-	 		  //channel.closeFuture.sync
-	 		  //channelFuture.await(7, TimeUnit.SECONDS)
-	 		  //println("isDone :", channelFuture.isDone)
-	 		  //println("isSuccess :", channelFuture.isSuccess)
 		  }
 		  else println("channel is not ready for writing yet")
 	  }
@@ -108,7 +87,6 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
  	// Netty will pick the local port for outgoing communication to the cloud side - automatically. This behavior can of course be changed. 	
  	val connectFuture = outgoingListener.connect(new InetSocketAddress("localhost", cloudPort)).addListener(new ChannelFutureListener(){
 		    def operationComplete(channelFuture: ChannelFuture){
-			  	//println(channelFuture.channel.isOpen.toString + channelFuture.channel.isActive.toString + channelFuture.channel.isRegistered.toString + channelFuture.channel.localAddress + channelFuture.channel.remoteAddress)
 			 	if (!channelFuture.channel.isOpen()) {
 			      println("Connection to cloud receiver failed.") // + future.getCause + future.getCause.printStackTrace)
 			    } //TODO: also check for success v.s. not completed. Will this hang if the server stalls?
@@ -121,8 +99,8 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 		  })
 
 	def start{ 
- 	  writer.write("aaa") 
- 	  writer.write("bbb")
+ 	  writer.write("foo") 
+ 	  writer.write("bar")
  	}
 		  
 }

@@ -1,22 +1,4 @@
 /**
- * TODO: Implement exception handling for stuff like connection closing, handshake failure 
- */
-
-package pipe
-
-//import scala.tools.nsc.interpreter.ILoop.{break, breakIf}
-import io.netty.bootstrap.ServerBootstrap
-import io.netty.handler.codec.http._
-import io.netty.handler.ssl.SslHandler
-import javax.net.ssl.SSLContext
-import javax.net.ssl.SSLEngine
-import javax.net.ssl.TrustManagerFactory
-import javax.net.ssl.KeyManagerFactory
-import java.security.KeyStore
-import java.io.FileInputStream
-
-
-/**
 * Creates an SSLEngine for netty to use.
 *  
 * Netty needs this set up handled for it before letting it run SSL.
@@ -30,7 +12,23 @@ import java.io.FileInputStream
 * 
 * TODO: figure a way of logging handshake details only for failed handshakes (stackoverflow). 
 * 		or enable orderly logging of all handshakes into a designated log
+* TODO: Further implement exception handling
+* 
 */
+  
+package pipe
+
+//import scala.tools.nsc.interpreter.ILoop.{break, breakIf}
+import io.netty.bootstrap.ServerBootstrap
+import io.netty.handler.codec.http._
+import io.netty.handler.ssl.SslHandler
+import javax.net.ssl.SSLContext
+import javax.net.ssl.SSLEngine
+import javax.net.ssl.TrustManagerFactory
+import javax.net.ssl.KeyManagerFactory
+import java.security.KeyStore
+import java.io.FileInputStream
+
 class sslSetup (sslServer: Boolean){
 
 	val sslContext : SSLContext = SSLContext.getInstance(Config.sslProtocol)
@@ -64,79 +62,3 @@ class sslSetup (sslServer: Boolean){
 }
 
 
-/**
-
-/**
- * Setup a server pipeline 
- */
-class HttpServerPipelineFactory(ssl: Boolean, sslServer: Boolean = true) extends ChannelPipelineFactory {
-	/**
-	 * netty pipeline creator
-	 */
-	override def getPipeline: ChannelPipeline = {	
-	  val pipeline = Channels.pipeline()
-	  if (ssl) {
-	    val sslHandler = new SslHandler(new sslSetup(sslServer).getSslEngine)
-	    println(sslHandler.isIssueHandshake)
-	    // The following (setCloseOnSSLException) is necessary due to the odd backwards compatible default behavior of netty 3.5,
-	    // as without it println(sslHandler.getCloseOnSSLException) still shows that this defaults to false.
-	    //sslHandler.setCloseOnSSLException(true);   
-	    pipeline.addLast("ssl", sslHandler);
-	  }
-  
-	  pipeline.addLast("decoder", new HttpObjectDecoder())
-	  
-	  // Uncomment the following line to aggregate http chunks
-	  //pipeline.addLast("aggregator", new HttpChunkAggregator(1048576));
-	  pipeline.addLast("encoder", new HttpObjectEncoder())
-	  
-	  // Remove the following line to compress content
-	  //pipeline.addLast("deflater", new HttpContentCompressor())
-	  
-	  pipeline.addLast("handler", new HttpRequestHandler())
-	  
-	  pipeline
-	}
-}
-
-
-
-/**
- * Setup a client pipeline 
- */
-class HttpClientPipelineFactory(ssl: Boolean) extends ChannelPipelineFactory {
-	/**
-	 * netty pipeline creator
-	 */
-	override def getPipeline: ChannelPipeline = {	
-	  val pipeline = Channels.pipeline()
-	  if (ssl) {
-	    val sslHandler = new SslHandler(new sslSetup(sslServer=false).getSslEngine)
-	    // The following (setCloseOnSSLException) is necessary due to the odd backwards compatible default behavior of netty 3.5,
-	    // as without it println(sslHandler.getCloseOnSSLException) still shows that this defaults to false.
-	    sslHandler.setCloseOnSSLException(true);   
-	    pipeline.addLast("ssl", sslHandler);
-	  }
-  
-	  pipeline.addLast("codec", new HttpClientCodec);
-	  
-	  // Uncomment the following line for automatic content decompression.
-	  //pipeline.addLast("inflater", new HttpContentDecompressor());
-	  
-	  // Uncomment the following line to aggregate http chunks
-	  //pipeline.addLast("aggregator", new HttpChunkAggregator(1048576));
-	  
-	  //pipeline.addLast("decoder", new HttpRequestDecoder())
-	  
-	  pipeline.addLast("handler", new HttpResponseHandler)	  
-  
-	  pipeline
-	}
-}
-
-class HttpResponseHandler extends SimpleChannelUpstreamHandler {
-	override def messageReceived(channelHandlerContext: ChannelHandlerContext, messageEvent: MessageEvent){
-	  println("Http response received")
-	}
-}
-*/
