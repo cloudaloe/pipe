@@ -75,7 +75,12 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
  	println("Broker object starting")
 
  	/**
+ 	 * 
  	 * Initialize a single outgoing connection to the cloud
+ 	 * 
+ 	 * Netty will pick the local port for outgoing communication to the cloud side - automatically. This behavior can of course be changed.
+ 	 * TODO: Will this hang if the server stalls?
+ 	 * 
  	 */
 	val outgoingListener = new Bootstrap()
  		outgoingListener.group(new NioEventLoopGroup)
@@ -84,23 +89,27 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
  						
  	var channel: Channel = _
 
- 	// Netty will pick the local port for outgoing communication to the cloud side - automatically. This behavior can of course be changed. 	
+ 	// connect and explicitly wait on handshake
  	val connectFuture = outgoingListener.connect(new InetSocketAddress("localhost", cloudPort)).addListener(new ChannelFutureListener(){
 		    def operationComplete(channelFuture: ChannelFuture){
 			 	if (!channelFuture.channel.isOpen()) {
 			      println("Connection to cloud receiver failed.") // + future.getCause + future.getCause.printStackTrace)
-			    } //TODO: also check for success v.s. not completed. Will this hang if the server stalls?
+			    }  
 			 	else {
-				 	channel = channelFuture.channel
-				 	writer.canWrite=true
-				 	start	
+			 		channel = channelFuture.channel			 	  
+				 	channelFuture.channel.pipeline.get(classOf[SslHandler]).handshake.addListener(new ChannelFutureListener(){
+				 		def operationComplete(channelFuture: ChannelFuture){
+				 			writer.canWrite=true
+				 			start				 		  
+				 		}
+				 	})
 			 	}
 		    }
 		  })
 
 	def start{ 
  	  writer.write("foo") 
- 	  writer.write("bar") // ======> disable this line, and the first write works
+ 	  writer.write("bar") 
  	}
 		  
 }
