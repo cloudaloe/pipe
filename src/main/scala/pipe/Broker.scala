@@ -90,12 +90,12 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
  	var channel: Channel = _
 
  	// connect and explicitly wait on handshake
- 	val connectFuture = outgoingListener.connect(new InetSocketAddress("localhost", cloudPort)).addListener(new ChannelFutureListener(){
+ 	var connectFuture = outgoingListener.connect(new InetSocketAddress("localhost", cloudPort)).addListener(new ChannelFutureListener(){
 		    def operationComplete(channelFuture: ChannelFuture){
 			 	if (!channelFuture.channel.isOpen()) {
 			      println("Connection to cloud receiver failed.") // + future.getCause + future.getCause.printStackTrace)
 			    }  
-			 	else {
+			 	else { 
 			 		channel = channelFuture.channel			 	  
 				 	channelFuture.channel.pipeline.get(classOf[SslHandler]).handshake.addListener(new ChannelFutureListener(){
 				 		def operationComplete(channelFuture: ChannelFuture){
