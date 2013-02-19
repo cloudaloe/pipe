@@ -100,7 +100,7 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 
 	def start{ 
  	  writer.write("foo") 
- 	  writer.write("bar")
+ 	  writer.write("bar") // ======> disable this line, and the first write works
  	}
 		  
 }
