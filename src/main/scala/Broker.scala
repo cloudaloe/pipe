@@ -21,7 +21,7 @@ import io.netty.channel.socket.nio.NioSocketChannel
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelFutureListener
-import akka.actor.Actor
+//import akka.actor.Actor
 
 
 /**
@@ -44,7 +44,7 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	    pipeline.addLast("HttpRequestEncoder", new HttpClientCodec)
 	    //pipeline.addLast("inflater", new HttpContentDecompressor());
 	    
-	    pipeline.addLast("httpAggregator", new HttpObjectAggregator(65536))
+	    //pipeline.addLast("httpAggregator", new HttpObjectAggregator(65536))
 		//pipeline.addLast("chunkedWriter", new ChunkedWriteHandler)
 		// MyHandler contains code that blocks so add it with the
 		// EventExecutor to the pipeline.
@@ -55,7 +55,7 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	    //var handshakeFuture = sslHandler.handshake()
 		//handshakeFuture.sync()
 	    
-		pipeline	    
+		//pipeline	    
 		}
 	}  
 	
@@ -78,7 +78,7 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	  var request: DefaultHttpRequest = _
 	  def write(msg: String){
 		  if (canWrite){
-	 		  request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/"+msg)
+	 		  request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.POST, "/"+msg)
 	 		  //request.headers.set(HttpHeaders.Names.HOST, "localhost")
 	 		  //request.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE)
 	 		  //request.headers.set(HttpHeaders.Names.ACCEPT_ENCODING, HttpHeaders.Values.GZIP)

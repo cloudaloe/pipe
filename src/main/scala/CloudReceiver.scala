@@ -1,5 +1,5 @@
 /**
- * Broker agent
+ * Cloud agent
  */
 
 package pipe
@@ -45,11 +45,11 @@ class CloudReceiver (port: Int, ssl: Boolean) {
 		// EventExecutor to the pipeline.
 		//pipeline.addLast(executor, "handler", new MyHandler());
 
-	    //pipeline.addLast("encoder", new HttpResponseEncoder)	    
+	    pipeline.addLast("encoder", new HttpResponseEncoder)	    
 	    
 		pipeline.addLast("handler", new HttpRequestHandler)
 		
-		pipeline
+		//pipeline
 	  }
 	  
 	  override def exceptionCaught(ctx: ChannelHandlerContext, e: Throwable){
@@ -74,34 +74,39 @@ class CloudReceiver (port: Int, ssl: Boolean) {
 			var channelFuture = channelHandlerContext.pipeline.get(classOf[SslHandler]).handshake
 		}*/
 	  
-		override def messageReceived(channelHandlerContext: ChannelHandlerContext, httpRequest: FullHttpRequest){
-			println("Http message received from " + channelHandlerContext.channel.remoteAddress)
+		override def messageReceived(ctx: ChannelHandlerContext, httpRequest: FullHttpRequest){
+			println("Http message received from " + ctx.channel.remoteAddress)
 			println("Http message uri is " + httpRequest.getUri)
 			println("Http message method is " + httpRequest.getMethod.toString)
 			
 			httpRequest.getMethod match {
 			  case HttpMethod.POST => {
 			    println("Handling POST request")
+			    // Add keep alive header as per:
+			    // - http://www.w3.org/Protocols/HTTP/1.1/draft-ietf-http-v11-spec-01.html#Connection
+			    ctx.write(new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)) // .headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE)
+			    //ctx.flush
+			    
 			  }
 			  case other => {
 				println("Request of type " + other + " will be ignored")
+				ctx.write(new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.NOT_IMPLEMENTED))
+				//ctx.flush
 			  }
 					  
 			}
 		}
+
+		//Error handler for cases e.g. the peer has unexpectedly closed the connection
+		override def exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable){
+		  println("Error detected on connection with remote peer " + ctx.channel.remoteAddress() + cause.printStackTrace)
+		  // print more details if this ever becomes very helpful
+		}
 		
 		/* 
-		 * This will fire when a peer is disconnected
+		 * This was fired when a peer disconnected, in Netty 3
 		override def channelDisconnected(channelHandlerContext: ChannelHandlerContext, channelStateEvent: ChannelStateEvent){
 		  println("Channel disconnected from peer " + channelHandlerContext.getChannel.getRemoteAddress)
-		}
-		*/
-		
-		/*
-		 * Error handler for cases e.g. the peer has unexpectedly closed the connection
-		override def exceptionCaught(channelHandlerContext: ChannelHandlerContext, exceptionEvent: ExceptionEvent){
-		  println("Error detected on connection: " + exceptionEvent.getCause.toString)
-		  // print more details if this ever becomes very helpful
 		}
 		*/
 	} 	
