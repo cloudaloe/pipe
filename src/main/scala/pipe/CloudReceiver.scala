@@ -5,25 +5,17 @@
 package pipe
 
 import io.netty.bootstrap.ServerBootstrap
-import java.util.concurrent.Executors
 import java.net.InetSocketAddress
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.ChannelHandlerContext
-import io.netty.buffer.ByteBuf
 import io.netty.channel.Channel
-import io.netty.channel.ChannelPipeline
 import io.netty.handler.ssl.SslHandler
 import io.netty.handler.codec.http._
-import io.netty.handler.stream.ChunkedWriteHandler
 import io.netty.handler.codec.http.HttpObjectAggregator
-import io.netty.handler.codec.http.HttpObjectDecoder
-import io.netty.handler.codec.http.HttpObjectEncoder
-import io.netty.handler.codec.serialization.ObjectDecoder
-import io.netty.handler.codec.http.HttpServerCodec
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
-import io.netty.handler.ssl
+import io.netty.channel.socket.nio.NioServerSocketChannel
 
 class CloudReceiver (port: Int, ssl: Boolean) {
 
