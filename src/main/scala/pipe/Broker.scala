@@ -17,6 +17,10 @@ import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelFutureListener
 import io.netty.channel.socket.nio.NioSocketChannel
+//import java.util.TimerTask
+//import java.util.Timer
+//import scala.actors.Future
+//import scala.actors.Futures._
 //import akka.actor.Actor
 
 /**
@@ -49,6 +53,8 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	  
 		override def messageReceived(ctx: ChannelHandlerContext, response: HttpResponse){
 			println("http response status: " + response.getStatus)
+			canWrite=true	
+			writer.write("bar")			
 		}
 		
 		override def exceptionCaught(ctx: ChannelHandlerContext, e: Throwable){
@@ -57,21 +63,28 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	}
 	
 	object writer { // pending refactoring of course
-	  var canWrite=false
 	  var request: DefaultHttpRequest = _
 	  def write(msg: String){
 		  if (canWrite){
+			  canWrite=false
 	 		  request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/"+msg)
+			  //request.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE)
 	 		  var writeFuture = channel.write(request).addListener(new ChannelFutureListener(){
 	 			  def operationComplete(channelFuture: ChannelFuture){
-	 				  println("write finished")
+	 			    if (channelFuture.isSuccess)
+	 			    	println("write finished successfully")
+	 			    else 
+	 			    	println ("write failed: " + channelFuture.cause + "\n" + channelFuture.cause.getStackTraceString)
 	 			  }
 	 		  })
 		  }
-		  else println("channel is not ready for writing yet")
+		  else{
+			  println("channel is not ready for writing yet")
+		  }
 	  }
 	}
 	
+	var canWrite=false
  	println("Broker object starting")
 
  	/**
@@ -96,20 +109,36 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 			      println("Connection to cloud receiver failed.") // + future.getCause + future.getCause.printStackTrace)
 			    }  
 			 	else { 
-			 		channel = channelFuture.channel			 	  
-				 	channelFuture.channel.pipeline.get(classOf[SslHandler]).handshake.addListener(new ChannelFutureListener(){
-				 		def operationComplete(channelFuture: ChannelFuture){
-				 			writer.canWrite=true
-				 			start				 		  
-				 		}
-				 	})
+			 		channel = channelFuture.channel
+			 		if (ssl){
+					 	channelFuture.channel.pipeline.get(classOf[SslHandler]).handshake.addListener(new ChannelFutureListener(){
+					 		def operationComplete(channelFuture: ChannelFuture){
+					 			canWrite=true
+					 			start				 		  
+					 		}
+					 	})
+			 		}
+			 		else {
+				 		canWrite=true
+				 		start
+			 		}
 			 	}
 		    }
 		  })
 
 	def start{ 
- 	  writer.write("foo") 
- 	  writer.write("bar") 
+ 	  writer.write("foo")
+ 	  
+ 	  
+ 	  /* val f1 = future {
+ 	    Thread.sleep(3000)
+ 	    writer.write("bar")
+ 	  }*/
+ 	  
+ 	  /*object defer extends java.util.TimerTask{
+ 		  override def run{ writer.write("bar") } 
+ 	  }*/
+ 	
+ 	  
  	}
-		  
 }

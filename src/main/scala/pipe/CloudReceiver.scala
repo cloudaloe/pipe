@@ -16,6 +16,10 @@ import io.netty.handler.codec.http.HttpObjectAggregator
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import io.netty.channel.socket.nio.NioServerSocketChannel
+import io.netty.buffer.Unpooled
+import io.netty.util.CharsetUtil
+import io.netty.channel.ChannelFutureListener
+import io.netty.channel.ChannelFuture
 
 class CloudReceiver (port: Int, ssl: Boolean) {
 
@@ -51,16 +55,40 @@ class CloudReceiver (port: Int, ssl: Boolean) {
 			println("Http message received from " + ctx.channel.remoteAddress)
 			println("Http message uri is " + httpRequest.getUri)
 			println("Http message method is " + httpRequest.getMethod.toString)
-			
+
 			httpRequest.getMethod match {
 			  case HttpMethod.POST => {
 			    println("Handling POST request")
-			    ctx.write(new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)) // .headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE)
+			    // later consider .headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE)
+			    // for now it's causing trouble, need to learn more about its meaning
+			    ctx.write(new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)).sync 
+			    ctx.channel.flush
+			    
 			    // TODO: handle the POST data
 			  }
 			  case other => {
 				println("Request of type " + other + " will be ignored")
-				ctx.write(new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)) // later switch to NOT_IMPLEMENTED 
+
+				val response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)
+				//response.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE)
+				val buf = new StringBuilder
+				buf.append("hello")
+				response.data.writeBytes(Unpooled.copiedBuffer(buf, CharsetUtil.UTF_8))
+				println(response.headers.names)
+				
+				//ctx.write(response).sync // later switch to NOT_IMPLEMENTED
+				//ctx.channel.flush
+				ctx.write(response).addListener(new ChannelFutureListener(){
+	 			  def operationComplete(channelFuture: ChannelFuture){
+	 			    if (channelFuture.isSuccess){
+	 			    	println("server write finished successfully")
+	 			    	// channelFuture.channel.close  <===== if uncommented, curl finishes waiting on the response, otherwise it just keeps waiting forever
+	 			    }
+	 			    else 
+	 			    	println ("server write failed: " + channelFuture.cause + "\n" + channelFuture.cause.getStackTraceString)
+	 			  }
+				})		
+				//println("server finished writing response")				
 			  }
 					  
 			}
