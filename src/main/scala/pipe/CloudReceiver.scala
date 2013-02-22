@@ -74,6 +74,7 @@ class CloudReceiver (port: Int, ssl: Boolean) {
 				val buf = new StringBuilder
 				buf.append("hello")
 				response.data.writeBytes(Unpooled.copiedBuffer(buf, CharsetUtil.UTF_8))
+				response.headers.set(HttpHeaders.Names.CONTENT_LENGTH, 5)				
 				println(response.headers.names)
 				
 				//ctx.write(response).sync // later switch to NOT_IMPLEMENTED
