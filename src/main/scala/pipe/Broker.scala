@@ -69,14 +69,21 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 			  canWrite=false
 	 		  request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/"+msg)
 			  //request.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE)
-	 		  var writeFuture = channel.write(request).addListener(new ChannelFutureListener(){
-	 			  def operationComplete(channelFuture: ChannelFuture){
-	 			    if (channelFuture.isSuccess)
-	 			    	println("write finished successfully")
-	 			    else 
-	 			    	println ("write failed: " + channelFuture.cause + "\n" + channelFuture.cause.getStackTraceString)
-	 			  }
-	 		  })
+			  try {
+		 		  var writeFuture = channel.write(request).addListener(new ChannelFutureListener(){
+		 			  def operationComplete(channelFuture: ChannelFuture){
+		 			    if (channelFuture.isSuccess)
+		 			    	println("write finished successfully")
+		 			    else 
+		 			    	println ("write failed: " + channelFuture.cause.getCause() + "\n" + channelFuture.cause.printStackTrace)
+		 			  }
+		 		  })
+			  } 
+			  catch {
+			    case e: io.netty.channel.PartialFlushException => println("cause is " + e.getCause())
+			    case unknown => println("cause is other")
+			  }
+			  finally { println("in finally") }
 		  }
 		  else{
 			  println("channel is not ready for writing yet")
