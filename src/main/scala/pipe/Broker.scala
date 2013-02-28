@@ -50,11 +50,16 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	 * handle server's http response or connection errors
 	 */
 	class httpClientHandler extends ChannelInboundMessageHandlerAdapter[HttpResponse]{
-	  
+		var sendOnceDone = false
+	 
 		override def messageReceived(ctx: ChannelHandlerContext, response: HttpResponse){
 			println("http response status: " + response.getStatus)
-			canWrite=true	
-			writer.write("bar")			
+			canWrite=true
+			if (!sendOnceDone)
+			{
+			  	sendOnceDone=true
+				writer.write("bar")			  	
+			}
 		}
 		
 		override def exceptionCaught(ctx: ChannelHandlerContext, e: Throwable){
@@ -63,11 +68,11 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 	}
 	
 	object writer { // pending refactoring of course
-	  var request: DefaultHttpRequest = _
+	  var request: DefaultFullHttpRequest = _
 	  def write(msg: String){
 		  if (canWrite){
 			  canWrite=false
-	 		  request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/"+msg)
+	 		  request = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/"+msg)
 			  //request.headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE)
 			  try {
 		 		  var writeFuture = channel.write(request).addListener(new ChannelFutureListener(){
@@ -83,7 +88,7 @@ class Broker (incomingPort: Int, cloudPort: Int, ssl: Boolean) {
 			    case e: io.netty.channel.PartialFlushException => println("cause is " + e.getCause())
 			    case unknown => println("cause is other")
 			  }
-			  finally { println("in finally") }
+			  finally {  }
 		  }
 		  else{
 			  println("channel is not ready for writing yet")
