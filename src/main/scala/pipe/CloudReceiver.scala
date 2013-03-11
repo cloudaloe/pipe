@@ -33,7 +33,7 @@ class CloudReceiver (port: Int, ssl: Boolean) {
 	    }
 		    //pipeline.addLast("httpCodec", new HttpServerCodec)
 	    pipeline.addLast("HttpRequestDecoder", new HttpRequestDecoder)
-		pipeline.addLast("httpAggregator", new HttpObjectAggregator(65536))
+	    pipeline.addLast("httpAggregator", new HttpObjectAggregator(65536))	    
 		//pipeline.addLast("chunkedWriter", new ChunkedWriteHandler)
 	    pipeline.addLast("encoder", new HttpResponseEncoder)	    
 		pipeline.addLast("handler", new HttpRequestHandler)
